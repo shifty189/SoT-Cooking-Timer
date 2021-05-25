@@ -280,7 +280,7 @@ def setTimer(x):
 
 main = tk.Tk()
 main.title("SoT Cooking Timer 0.3")
-worldMap = tk.PhotoImage(file=".\\assets\\Map4.png")
+worldMap = tk.PhotoImage(file="Map4.png")
 
 fish_image = tk.PhotoImage(file="fish.png")
 trophy_image = tk.PhotoImage(file="TrophyFish.png")
