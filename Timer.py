@@ -21,6 +21,62 @@ trophyStatus = " "
 meatStatus = " "
 krakenStatus = " "
 
+def splashtail():
+    splashtailWindow = tk.Toplevel(main)
+    splashtailWindow.title('Splashtail')
+    splashLabel = tk.Label(splashtailWindow, text="Splashtail's can be found anywhere, no need for bait.").pack()
+
+
+def pondie():
+    pondieWindow = tk.Toplevel(main)
+    pondieWindow.title('Pondie')
+    pondieLabel = tk.Label(pondieWindow, text="Pondie's are found in fresh water ponds. No bait is needed").pack()
+
+def plentifin():
+    plentifinWindow = tk.Toplevel(main)
+    plentifinWindow.title('Plentifin')
+    plentifinLabel = tk.Label(plentifinWindow, text="Plentifin's are found in the Shores of Plenty. Use Earthworms for bait").pack()
+
+def wildsplash():
+    wildsplashWindow = tk.Toplevel(main)
+    wildsplashWindow.title('Wildsplash')
+    wildsplashLabel = tk.Label(wildsplashWindow, text="Wildsplash's are found in the Wilds. use Earthworms for bait").pack()
+
+def ancientscales():
+    ancientscaleWindow = tk.Toplevel(main)
+    ancientscaleWindow.title('Ancientscale')
+    ancientscaleLabel = tk.Label(ancientscaleWindow, text="Ancientscale's can be found in the ancient isles. Use Leeches for bait").pack()
+
+def devilfish():
+    devilfishWindow = tk.Toplevel(main)
+    devilfishWindow.title('Devilfish')
+    devilfishLabel = tk.Label(devilfishWindow, text="Devilfish are found in the Devil's Roar. use Grubs for bait").pack()
+
+def battlegill():
+    battlegilWindow = tk.Toplevel(main)
+    battlegilWindow.title('Battlegill')
+    battlegilLabel = tk.Label(battlegilWindow, text="Battlegill are found near skeleton ships and active skull forts. use Grubs for bait").pack()
+
+def wrecker():
+    wreckerWindow = tk.Toplevel(main)
+    wreckerWindow.title('Wrecker')
+    wreckerLabel = tk.Label(wreckerWindow, text="Wreckers are found near shipwrecks. use Earthworms as bait.").pack()
+
+def stormfish():
+    stormfishWindow = tk.Toplevel(main)
+    stormfishWindow.title('Stormfish')
+    stormfishLabel = tk.Label(stormfishWindow, text="Stormfish are found in the storm. Use Leeches as bait.").pack()
+
+def islehopper():
+    islehopperWindow = tk.Toplevel(main)
+    islehopperWindow.title('Islehopper')
+    islehopperLabel = tk.Label(islehopperWindow, text="Islehoppers are only found close to islands. No bait is needed").grid(row=0, column=0)
+    islehopperLabel2 = tk.Label(islehopperWindow, text=" ").grid(row=1, column=0)
+    islehopperLabel3 = tk.Label(islehopperWindow, text="Stone Islehopper: Found at Shipwreck Bay, Shark Bait Cove, Crook's Hollow, Sailor's Bounty, Cannon Cove and Fetcher's Rest.").grid(row=2, column=0)
+    islehopperLabel4 = tk.Label(islehopperWindow, text="Moss Islehopper: Found at Ashen Reaches, Thieves' Haven, Marauder's Arch, Lone Cove, Wanderers Refuge and Ruby's Fall.").grid(row=3, column=0)
+    islehopperLabel5 = tk.Label(islehopperWindow, text="Honey Islehopper: Found at Discovery Ridge, Plunder Valley, Kraken's Fall, Sunken Grove, Crescent Isle and The Devil's Thirst.").grid(row=4, column=0)
+    islehopperLabel6 = tk.Label(islehopperWindow, text="Raven Islehopper: A rare sight at any large island. (TIP: Fish for this variant during the day at any island where Amethyst Islehoppers are found. You will only get Splashtails or Raven Islehoppers.)").grid(row=5, column=0)
+    islehopperLabel7 = tk.Label(islehopperWindow, text="Amethyst Islehopper: A night time catch found at Devil's Ridge, Smuggler's Bay, Mermaid's Hideaway, The Crooked Masts, Old Faithful Isle, Flintlock Peninsula and Snake Island.").grid(row=6, column=0)
 
 def showMap():
     global worldMap
@@ -53,6 +109,7 @@ def timer():
             Fish_Label.config(bg="Red")
             Fish_Label.config(fg="Black")
             fishStatus = "Cooked"
+            print("Fish is done cooking")
             if fishTime < -40:
                 fishStatus = "Burned"
                 Fish_Label.config(bg="Black")
@@ -222,8 +279,8 @@ def setTimer(x):
 
 
 main = tk.Tk()
-main.title("SoT Cooking Timer 0.2")
-worldMap = tk.PhotoImage(file="Map4.png")
+main.title("SoT Cooking Timer 0.3")
+worldMap = tk.PhotoImage(file=".\\assets\\Map4.png")
 
 fish_image = tk.PhotoImage(file="fish.png")
 trophy_image = tk.PhotoImage(file="TrophyFish.png")
@@ -269,6 +326,18 @@ main.config(menu=menubar)
 file_menu = tk.Menu(menubar)
 menubar.add_cascade(label="Tools", menu=file_menu)
 file_menu.add_command(label="Map", command=showMap)
+# fish menu
+fish_menu = tk.Menu(menubar)
+menubar.add_cascade(label="Fish", menu=fish_menu)
+fish_menu.add_command(label="Splashtail", command=splashtail)
+fish_menu.add_command(label="Pondie", command=pondie)
+fish_menu.add_command(label="Plentifin", command=plentifin)
+fish_menu.add_command(label="Wildsplash", command=wildsplash)
+fish_menu.add_command(label="Devilfish", command=devilfish)
+fish_menu.add_command(label="Battlegill", command=battlegill)
+fish_menu.add_command(label="Wrecker", command=wrecker)
+fish_menu.add_command(label="Stormfish", command=stormfish)
+fish_menu.add_command(label="Islehopper", command=islehopper)
 
 main.after(0, timer)
 tk.mainloop()
