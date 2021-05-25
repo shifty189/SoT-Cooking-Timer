@@ -228,7 +228,7 @@ worldMap = tk.PhotoImage(file="Map4.png")
 fish_image = tk.PhotoImage(file="fish.png")
 trophy_image = tk.PhotoImage(file="TrophyFish.png")
 meat_image = tk.PhotoImage(file="meat.png")
-kraken_image = tk.PhotoImage(file="kraken.png")
+kraken_image = tk.PhotoImage(file="LegendMeat.png")
 
 Fish_Button = tk.Button(main, image=fish_image, text="Fish", command=lambda: setTimer('fish'))
 Fish_Button.grid(row=0, column=0)
