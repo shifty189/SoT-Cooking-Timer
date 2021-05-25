@@ -28,9 +28,6 @@ def showMap():
     # secondLabel = tk.Label(secondWindow, image=worldMap)
     secondLabel = tk.Canvas(secondWindow, width=800, height=700)
     wMap = secondLabel.create_image([400, 375], image=worldMap)
-    # scroll_x = tk.Scrollbar(secondLabel, orient="horizontal", command=secondLabel.xview)
-    # secondLabel.configure(scrollregion=secondLabel.bbox("all"))
-    # scroll_x.grid(row=1, column=0, sticky="ew")
     secondLabel.grid(row=0, column=0)
 
 
@@ -52,13 +49,10 @@ def timer():
         fishTime -= 1
         Fish_Label.config(bg="Green")
         Fish_Label.config(fg="Yellow")
-        # fishStatus = "Cooked"
         if fishTime < 1:
-            # fishTime -= 1
             Fish_Label.config(bg="Red")
             Fish_Label.config(fg="Black")
             fishStatus = "Cooked"
-            print("Fish is done cooking")
             if fishTime < -40:
                 fishStatus = "Burned"
                 Fish_Label.config(bg="Black")
@@ -72,7 +66,6 @@ def timer():
         trophyTime -= 1
         Trophy_Label.config(bg="Green")
         Trophy_Label.config(fg="Yellow")
-        # fishStatus = "Cooked"
         if trophyTime < 1:
             Trophy_Label.config(bg="Red")
             Trophy_Label.config(fg="Black")
@@ -120,7 +113,6 @@ def timer():
             krakenStatus = " "
             krakenTime = 0
     Kraken_Label['text'] = str(krakenTime)
-    # print(fishTime)
 
     Fish_Status_Label.config(text=fishStatus)
     Trophy_Status_Label.config(text=trophyStatus)
@@ -260,7 +252,6 @@ Meat_Label = tk.Label(main, text=str(meatTime))
 Meat_Label.config(bg="Light Grey", width=5, height=5)
 Meat_Label.grid(row=2, column=1)
 Meat_Status_Label = tk.Label(main, text=meatStatus, width=8, height=8)
-# Meat_Status_Label.config(width = 8, height = 8)
 Meat_Status_Label.grid(row=2, column=2)
 
 Kraken_Button = tk.Button(main, image=kraken_image, text="Normal Meat", command=lambda: setTimer('kraken'))
@@ -269,7 +260,6 @@ Kraken_Label = tk.Label(main, text=str(meatTime))
 Kraken_Label.config(bg="Light Grey", width=5, height=5)
 Kraken_Label.grid(row=3, column=1)
 Kraken_Status_Label = tk.Label(main, text=meatStatus, width=8, height=8)
-# Meat_Status_Label.config(width = 8, height = 8)
 Kraken_Status_Label.grid(row=3, column=2)
 
 
