@@ -223,12 +223,12 @@ def setTimer(x):
 
 main = tk.Tk()
 main.title("SoT Cooking Timer 0.2")
-worldMap = tk.PhotoImage(file=".\\assets\\Map4.png")
+worldMap = tk.PhotoImage(file="Map4.png")
 
-fish_image = tk.PhotoImage(file=".\\assets\\fish.png")
-trophy_image = tk.PhotoImage(file=".\\assets\\TrophyFish.png")
-meat_image = tk.PhotoImage(file=".\\assets\\pig.png")
-kraken_image = tk.PhotoImage(file=".\\assets\\kraken.png")
+fish_image = tk.PhotoImage(file="fish.png")
+trophy_image = tk.PhotoImage(file="TrophyFish.png")
+meat_image = tk.PhotoImage(file="pig.png")
+kraken_image = tk.PhotoImage(file="kraken.png")
 
 Fish_Button = tk.Button(main, image=fish_image, text="Fish", command=lambda: setTimer('fish'))
 Fish_Button.grid(row=0, column=0)
