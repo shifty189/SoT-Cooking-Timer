@@ -113,7 +113,6 @@ def timer():
             fishStatus = "Cooked"
             if fishTime == 0:
                 playsound('fish.mp3')
-            print("Fish is done cooking")
             if fishTime < -40:
                 fishStatus = "Burned"
                 Fish_Label.config(bg="Black")
@@ -150,6 +149,8 @@ def timer():
             Meat_Label.config(bg="Red")
             Meat_Label.config(fg="Black")
             meatStatus = "Cooked"
+            if meatTime == 0:
+                playsound('food.mp3')
         if meatTime < -60:
             meatStatus = "Burned"
             Meat_Label.config(bg="Black")
@@ -167,6 +168,8 @@ def timer():
             Kraken_Label.config(bg="Red")
             Kraken_Label.config(fg="Black")
             krakenStatus = "Cooked"
+            if krakenTime == 0:
+                playsound('food.mp3')
         if meatTime < -120:
             krakenStatus = "Burned"
             Kraken_Label.config(bg="Black")
