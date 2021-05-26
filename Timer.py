@@ -207,84 +207,112 @@ def setTimer(x):
     global cookingKraken
 
     if x == "fish":
-        cookingFish = True
-        cookingTrophy = False
-        cookingMeat = False
-        cookingKraken = False
-        Fish_Label.config(bg="Green")
-        Fish_Label.config(fg="Yellow")
-        fishStatus = "Cooking"
-        fishTime = 40
-        trophyTime = 0
-        meatTime = 0
-        krakenTime = 0
-        Trophy_Label.config(bg="Light Grey")
-        Trophy_Label.config(fg="Black")
-        trophyStatus = " "
-        Meat_Label.config(bg="Light Grey")
-        Meat_Label.config(fg="Black")
-        meatStatus = " "
-        Kraken_Label.config(bg='Light Grey', fg='Black')
-        krakenStatus = " "
+        if cookingFish == False:
+            cookingFish = True
+            cookingTrophy = False
+            cookingMeat = False
+            cookingKraken = False
+            Fish_Label.config(bg="Green")
+            Fish_Label.config(fg="Yellow")
+            fishStatus = "Cooking"
+            fishTime = 40
+            trophyTime = 0
+            meatTime = 0
+            krakenTime = 0
+            Trophy_Label.config(bg="Light Grey")
+            Trophy_Label.config(fg="Black")
+            trophyStatus = " "
+            Meat_Label.config(bg="Light Grey")
+            Meat_Label.config(fg="Black")
+            meatStatus = " "
+            Kraken_Label.config(bg='Light Grey', fg='Black')
+            krakenStatus = " "
+        else:
+            cookingFish = False
+            Fish_Label.config(bg="Light Grey")
+            Fish_Label.config(fg="Black")
+            fishStatus = " "
+            fishTime = 0
     elif x == 'trophy':
-        cookingTrophy = True
-        cookingFish = False
-        cookingMeat = False
-        cookingKraken = False
-        Trophy_Label.config(bg="Green")
-        Trophy_Label.config(fg="Yellow")
-        trophyStatus = "Cooking"
-        trophyTime = 90
-        fishTime = 0
-        meatTime = 0
-        krakenTime = 0
-        Fish_Label.config(bg="Light Grey")
-        Fish_Label.config(fg="Black")
-        fishStatus = " "
-        Meat_Label.config(bg="Light Grey")
-        Meat_Label.config(fg="Black")
-        meatStatus = " "
-        Kraken_Label.config(bg='Light Grey', fg='Black')
-        krakenStatus = " "
+        if cookingTrophy == False:
+            cookingTrophy = True
+            cookingFish = False
+            cookingMeat = False
+            cookingKraken = False
+            Trophy_Label.config(bg="Green")
+            Trophy_Label.config(fg="Yellow")
+            trophyStatus = "Cooking"
+            trophyTime = 90
+            fishTime = 0
+            meatTime = 0
+            krakenTime = 0
+            Fish_Label.config(bg="Light Grey")
+            Fish_Label.config(fg="Black")
+            fishStatus = " "
+            Meat_Label.config(bg="Light Grey")
+            Meat_Label.config(fg="Black")
+            meatStatus = " "
+            Kraken_Label.config(bg='Light Grey', fg='Black')
+            krakenStatus = " "
+        else:
+            cookingTrophy = False
+            Trophy_Label.config(bg="Light Grey")
+            Trophy_Label.config(fg="Black")
+            trophyStatus = " "
+            trophyTime = 0
     elif x == 'meat':
-        cookingMeat = True
-        cookingTrophy = False
-        cookingFish = False
-        cookingKraken = False
-        Meat_Label.config(bg="Green")
-        Meat_Label.config(fg="Yellow")
-        meatStatus = "Cooking"
-        meatTime = 60
-        trophyTime = 0
-        fishTime = 0
-        krakenTime = 0
-        Fish_Label.config(bg="Light Grey")
-        Fish_Label.config(fg="Black")
-        fishStatus = " "
-        Trophy_Label.config(bg="Light Grey")
-        Trophy_Label.config(fg="Black")
-        trophyStatus = " "
-        Kraken_Label.config(bg='Light Grey', fg='Black')
-        krakenStatus = " "
+        if cookingMeat == False:
+            cookingMeat = True
+            cookingTrophy = False
+            cookingFish = False
+            cookingKraken = False
+            Meat_Label.config(bg="Green")
+            Meat_Label.config(fg="Yellow")
+            meatStatus = "Cooking"
+            meatTime = 60
+            trophyTime = 0
+            fishTime = 0
+            krakenTime = 0
+            Fish_Label.config(bg="Light Grey")
+            Fish_Label.config(fg="Black")
+            fishStatus = " "
+            Trophy_Label.config(bg="Light Grey")
+            Trophy_Label.config(fg="Black")
+            trophyStatus = " "
+            Kraken_Label.config(bg='Light Grey', fg='Black')
+            krakenStatus = " "
+        else:
+            cookingMeat = False
+            Meat_Label.config(bg="Light Grey")
+            Meat_Label.config(fg="Black")
+            meatStatus = " "
+            meatTime = 0
     elif x == 'kraken':
-        cookingKraken = True
-        cookingTrophy = False
-        cookingFish = False
-        cookingMeat = False
-        Kraken_Label.config(bg="Green", fg="Yellow")
-        krakenStatus = "Cooking"
-        krakenTime = 120
-        trophyTime = 0
-        fishTime = 0
-        meatTime = 0
-        Fish_Label.config(bg="Light Grey")
-        Fish_Label.config(fg="Black")
-        fishStatus = " "
-        Trophy_Label.config(bg="Light Grey")
-        Trophy_Label.config(fg="Black")
-        trophyStatus = " "
-        Meat_Label.config(bg='Light Grey', fg='Black')
-        meatStatus = " "
+        if cookingKraken == False:
+            cookingKraken = True
+            cookingTrophy = False
+            cookingFish = False
+            cookingMeat = False
+            Kraken_Label.config(bg="Green", fg="Yellow")
+            krakenStatus = "Cooking"
+            krakenTime = 120
+            trophyTime = 0
+            fishTime = 0
+            meatTime = 0
+            Fish_Label.config(bg="Light Grey")
+            Fish_Label.config(fg="Black")
+            fishStatus = " "
+            Trophy_Label.config(bg="Light Grey")
+            Trophy_Label.config(fg="Black")
+            trophyStatus = " "
+            Meat_Label.config(bg='Light Grey', fg='Black')
+            meatStatus = " "
+        else:
+            cookingKraken = False
+            Kraken_Label.config(bg="Light Grey")
+            Kraken_Label.config(fg="Black")
+            krakenStatus = " "
+            krakenTime = 0
 
 
 main = tk.Tk()
