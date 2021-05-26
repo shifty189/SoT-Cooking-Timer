@@ -1,4 +1,5 @@
 #  This is a cooking timer for Sea of Thieves
+# the text to speach is from https://wideo.co/text-to-speech/
 #
 # fish = 30sec undercook, 40s cooked, 80s burn
 # trophy fish 80s undercook, 90s cooked, 180s burn
@@ -6,6 +7,7 @@
 # Kraken and Meg 100s undercook, 120s cook, 240s burn
 
 import tkinter as tk
+from playsound import playsound
 
 
 fishTime = 0
@@ -109,6 +111,8 @@ def timer():
             Fish_Label.config(bg="Red")
             Fish_Label.config(fg="Black")
             fishStatus = "Cooked"
+            if fishTime == 0:
+                playsound('fish.mp3')
             print("Fish is done cooking")
             if fishTime < -40:
                 fishStatus = "Burned"
@@ -127,6 +131,8 @@ def timer():
             Trophy_Label.config(bg="Red")
             Trophy_Label.config(fg="Black")
             trophyStatus = "Cooked"
+            if trophyTime == 0:
+                playsound('fish.mp3')
         if trophyTime < -119:
             trophyStatus = "Burning"
             Trophy_Label.config(bg="Black")
