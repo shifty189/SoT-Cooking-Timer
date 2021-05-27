@@ -46,7 +46,7 @@ def allFish():
 def splashtail():
     splashtailWindow = tk.Toplevel(main)
     splashtailWindow.title('Splashtail')
-    splashLabel = tk.Label(splashtailWindow, text="Splashtail's can be found anywhere, no need for bait."/n).pack()
+    splashLabel = tk.Label(splashtailWindow, text="Splashtail's can be found anywhere, no need for bait.").pack()
 	
 
 
