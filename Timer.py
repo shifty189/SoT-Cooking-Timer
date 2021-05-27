@@ -31,7 +31,17 @@ def soundOff():
 
 def allFish():
 	allfishWindow = tk.Toplevel(main)
-	allSplash = tk.Label(allfishWindow, text="Splashtail's can be found anywhere, no need for bait.").pack()
+	allSplash = tk.Label(allfishWindow, text="Splashtail's can be found anywhere, no need for bait.", fg="Red", font=("Arial", 18)).pack()
+	allPondie = tk.Label(allfishWindow, text="Pondie's are found in fresh water ponds. No bait is needed", fg="Blue", font=("Arial", 18)).pack()
+	allPlentifin = tk.Label(allfishWindow, text="Plentifin's are found in the Shores of Plenty. Use Earthworms for bait", fg="Red", font=("Arial", 18)).pack()
+	allWildsplash = tk.Label(allfishWindow, text="Wildsplash's are found in the Wilds. use Earthworms for bait", fg="Blue", font=("Arial", 18)).pack()
+	allAncientscale = tk.Label(allfishWindow, text="Ancientscale's can be found in the ancient isles. Use Leeches for bait", fg="Red", font=("Arial", 18)).pack()
+	allDevilfish = tk.Label(allfishWindow, text="Devilfish are found in the Devil's Roar. use Grubs for bait", fg="Blue", font=("Arial", 18)).pack()
+	allBattlegill = tk.Label(allfishWindow, text="Battlegill are found near skeleton ships and active skull forts. use Grubs for bait", fg="Red", font=("Arial", 18)).pack()
+	allWrecker = tk.Label(allfishWindow, text="Wreckers are found near shipwrecks. use Earthworms as bait.", fg="Blue", font=("Arial", 18)).pack()
+	allStormfish = tk.Label(allfishWindow, text="Stormfish are found in the storm. Use Leeches as bait.", fg="Red", font=("Arial", 18)).pack()
+	allIslehopper = tk.Label(allfishWindow, text="Islehoppers are only found close to islands. No bait is needed", fg="Blue", font=("Arial", 18)).pack()
+	allIslehopper2 = tk.Label(allfishWindow, text="Open the Islehopers section from the fish menu for details on where to find each kind of Islehopper", fg="Blue", font=("Arial", 18)).pack()
 
 def splashtail():
     splashtailWindow = tk.Toplevel(main)
