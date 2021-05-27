@@ -23,10 +23,21 @@ trophyStatus = " "
 meatStatus = " "
 krakenStatus = " "
 
+def soundOn():
+	sound.set(0)
+	
+def soundOff():
+	sound.set(1)
+
+def allFish():
+	allfishWindow = tk.Toplevel(main)
+	allSplash = tk.Label(allfishWindow, text="Splashtail's can be found anywhere, no need for bait.").pack()
+
 def splashtail():
     splashtailWindow = tk.Toplevel(main)
     splashtailWindow.title('Splashtail')
-    splashLabel = tk.Label(splashtailWindow, text="Splashtail's can be found anywhere, no need for bait.").pack()
+    splashLabel = tk.Label(splashtailWindow, text="Splashtail's can be found anywhere, no need for bait."/n).pack()
+	
 
 
 def pondie():
@@ -112,7 +123,8 @@ def timer():
             Fish_Label.config(fg="Black")
             fishStatus = "Cooked"
             if fishTime == 0:
-                playsound('fish.mp3')
+                if sound.get() == 0:
+                    playsound('fish.mp3')
             if fishTime < -40:
                 fishStatus = "Burned"
                 Fish_Label.config(bg="Black")
@@ -131,7 +143,8 @@ def timer():
             Trophy_Label.config(fg="Black")
             trophyStatus = "Cooked"
             if trophyTime == 0:
-                playsound('fish.mp3')
+                if sound.get() == 0:
+                    playsound('fish.mp3')
         if trophyTime < -119:
             trophyStatus = "Burning"
             Trophy_Label.config(bg="Black")
@@ -150,7 +163,8 @@ def timer():
             Meat_Label.config(fg="Black")
             meatStatus = "Cooked"
             if meatTime == 0:
-                playsound('food.mp3')
+                if sound.get() == 0:
+                    playsound('food.mp3')
         if meatTime < -60:
             meatStatus = "Burned"
             Meat_Label.config(bg="Black")
@@ -169,7 +183,8 @@ def timer():
             Kraken_Label.config(fg="Black")
             krakenStatus = "Cooked"
             if krakenTime == 0:
-                playsound('food.mp3')
+                if sound.get() == 0:
+                    playsound('food.mp3')
         if meatTime < -120:
             krakenStatus = "Burned"
             Kraken_Label.config(bg="Black")
@@ -375,6 +390,15 @@ fish_menu.add_command(label="Battlegill", command=battlegill)
 fish_menu.add_command(label="Wrecker", command=wrecker)
 fish_menu.add_command(label="Stormfish", command=stormfish)
 fish_menu.add_command(label="Islehopper", command=islehopper)
+fish_menu.add_separator()
+fish_menu.add_command(label="All Fish", command=allFish)
+# options menu
+sound = tk.IntVar(main, name="sound")
+sound.set(0)
+option_menu = tk.Menu(menubar)
+menubar.add_cascade(label="Options", menu=option_menu)
+option_menu.add_radiobutton(label="Sound On", variable=sound, value=0, command=soundOn)
+option_menu.add_radiobutton(label="Sound Off", variable=sound, value=1, command=soundOff)
 
 main.after(0, timer)
 tk.mainloop()
