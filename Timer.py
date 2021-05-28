@@ -23,10 +23,31 @@ trophyStatus = " "
 meatStatus = " "
 krakenStatus = " "
 
+def soundOn():
+	sound.set(0)
+	
+def soundOff():
+	sound.set(1)
+
+def allFish():
+	allfishWindow = tk.Toplevel(main)
+	allSplash = tk.Label(allfishWindow, text="Splashtail's can be found anywhere, no need for bait.", fg="Red", font=("Arial", 18)).pack()
+	allPondie = tk.Label(allfishWindow, text="Pondie's are found in fresh water ponds. No bait is needed", fg="Blue", font=("Arial", 18)).pack()
+	allPlentifin = tk.Label(allfishWindow, text="Plentifin's are found in the Shores of Plenty. Use Earthworms for bait", fg="Red", font=("Arial", 18)).pack()
+	allWildsplash = tk.Label(allfishWindow, text="Wildsplash's are found in the Wilds. use Earthworms for bait", fg="Blue", font=("Arial", 18)).pack()
+	allAncientscale = tk.Label(allfishWindow, text="Ancientscale's can be found in the ancient isles. Use Leeches for bait", fg="Red", font=("Arial", 18)).pack()
+	allDevilfish = tk.Label(allfishWindow, text="Devilfish are found in the Devil's Roar. use Grubs for bait", fg="Blue", font=("Arial", 18)).pack()
+	allBattlegill = tk.Label(allfishWindow, text="Battlegill are found near skeleton ships and active skull forts. use Grubs for bait", fg="Red", font=("Arial", 18)).pack()
+	allWrecker = tk.Label(allfishWindow, text="Wreckers are found near shipwrecks. use Earthworms as bait.", fg="Blue", font=("Arial", 18)).pack()
+	allStormfish = tk.Label(allfishWindow, text="Stormfish are found in the storm. Use Leeches as bait.", fg="Red", font=("Arial", 18)).pack()
+	allIslehopper = tk.Label(allfishWindow, text="Islehoppers are only found close to islands. No bait is needed", fg="Blue", font=("Arial", 18)).pack()
+	allIslehopper2 = tk.Label(allfishWindow, text="Open the Islehopers section from the fish menu for details on where to find each kind of Islehopper", fg="Blue", font=("Arial", 18)).pack()
+
 def splashtail():
     splashtailWindow = tk.Toplevel(main)
     splashtailWindow.title('Splashtail')
     splashLabel = tk.Label(splashtailWindow, text="Splashtail's can be found anywhere, no need for bait.").pack()
+	
 
 
 def pondie():
@@ -112,7 +133,8 @@ def timer():
             Fish_Label.config(fg="Black")
             fishStatus = "Cooked"
             if fishTime == 0:
-                playsound('fish.mp3')
+                if sound.get() == 0:
+                    playsound('fish.mp3')
             if fishTime < -40:
                 fishStatus = "Burned"
                 Fish_Label.config(bg="Black")
@@ -131,7 +153,8 @@ def timer():
             Trophy_Label.config(fg="Black")
             trophyStatus = "Cooked"
             if trophyTime == 0:
-                playsound('fish.mp3')
+                if sound.get() == 0:
+                    playsound('fish.mp3')
         if trophyTime < -119:
             trophyStatus = "Burning"
             Trophy_Label.config(bg="Black")
@@ -150,7 +173,8 @@ def timer():
             Meat_Label.config(fg="Black")
             meatStatus = "Cooked"
             if meatTime == 0:
-                playsound('food.mp3')
+                if sound.get() == 0:
+                    playsound('food.mp3')
         if meatTime < -60:
             meatStatus = "Burned"
             Meat_Label.config(bg="Black")
@@ -169,7 +193,8 @@ def timer():
             Kraken_Label.config(fg="Black")
             krakenStatus = "Cooked"
             if krakenTime == 0:
-                playsound('food.mp3')
+                if sound.get() == 0:
+                    playsound('food.mp3')
         if meatTime < -120:
             krakenStatus = "Burned"
             Kraken_Label.config(bg="Black")
@@ -375,6 +400,15 @@ fish_menu.add_command(label="Battlegill", command=battlegill)
 fish_menu.add_command(label="Wrecker", command=wrecker)
 fish_menu.add_command(label="Stormfish", command=stormfish)
 fish_menu.add_command(label="Islehopper", command=islehopper)
+fish_menu.add_separator()
+fish_menu.add_command(label="All Fish", command=allFish)
+# options menu
+sound = tk.IntVar(main, name="sound")
+sound.set(0)
+option_menu = tk.Menu(menubar)
+menubar.add_cascade(label="Options", menu=option_menu)
+option_menu.add_radiobutton(label="Sound On", variable=sound, value=0, command=soundOn)
+option_menu.add_radiobutton(label="Sound Off", variable=sound, value=1, command=soundOff)
 
 main.after(0, timer)
 tk.mainloop()
