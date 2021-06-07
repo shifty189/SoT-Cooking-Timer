@@ -10,9 +10,13 @@ import tkinter as tk
 from playsound import playsound
 
 fishTime = 0
+fishBurnTime = 0
 trophyTime = 0
+trophyBurnTime = 0
 meatTime = 0
+meatBurnTime = 0
 krakenTime = 0
+krakenBurnTime = 0
 cookingFish = False
 cookingTrophy = False
 cookingMeat = False
@@ -21,6 +25,17 @@ fishStatus = " "
 trophyStatus = " "
 meatStatus = " "
 krakenStatus = " "
+
+
+def updateLabels():
+    Fish_Label['text'] = str(fishTime)
+    Fish_Burn_Label['text'] = str(fishBurnTime)
+    Trophy_Label['text'] = str(trophyTime)
+    Trophy_Burn_Label['text'] = str(trophyBurnTime)
+    Meat_Label['text'] = str(meatTime)
+    Meat_Burn_Label['text'] = str(meatBurnTime)
+    Kraken_Label['text'] = str(meatTime)
+    Kraken_Burn_Label['text'] = str(meatBurnTime)
 
 
 def soundOn():
@@ -105,7 +120,8 @@ def battlegill():
     battlegilWindow = tk.Toplevel(main)
     battlegilWindow.title('Battlegill')
     battlegilLabel = tk.Label(battlegilWindow,
-                              text="Battlegill are found near skeleton ships and active skull forts. use Grubs for bait").pack()
+                              text="Battlegill are found near skeleton ships and active skull forts. use Grubs for bait"
+                              ).pack()
 
 
 def wrecker():
@@ -169,6 +185,7 @@ def timer():
 
     if cookingFish:
         fishTime -= 1
+        fishBurnTime = fishTime + 40
         Fish_Label.config(bg="Green")
         Fish_Label.config(fg="Yellow")
         if fishTime < 1:
@@ -187,8 +204,10 @@ def timer():
                 fishStatus = " "
                 fishTime = 0
         Fish_Label['text'] = str(trophyTime)
+        Fish_Burn_Label['text'] = str(fishBurnTime)
     if cookingTrophy:
         trophyTime -= 1
+        trophyBurnTime = trophyTime + 90
         Trophy_Label.config(bg="Green")
         Trophy_Label.config(fg="Yellow")
         if trophyTime < 1:
@@ -206,9 +225,11 @@ def timer():
             cookingTrophy = False
             trophyStatus = " "
             trophyTime = 0
-    Trophy_Label['text'] = str(fishTime)
+        Trophy_Label['text'] = str(fishTime)
+        Trophy_Burn_Label['text'] = str(trophyBurnTime)
     if cookingMeat:
         meatTime -= 1
+        meatBurnTime = meatTime + 60
         Meat_Label.config(bg="Green")
         Meat_Label.config(fg="Yellow")
         if meatTime < 1:
@@ -226,9 +247,11 @@ def timer():
             cookingMeat = False
             meatStatus = " "
             meatTime = 0
-    Meat_Label['text'] = str(meatTime)
+        Meat_Label['text'] = str(meatTime)
+        Meat_Burn_Label['text'] = str(meatBurnTime)
     if cookingKraken:
         krakenTime -= 1
+        krakenBurnTime = krakenTime + 120
         Kraken_Label.config(bg="Green")
         Kraken_Label.config(fg="Yellow")
         if krakenTime < 1:
@@ -238,7 +261,7 @@ def timer():
             if krakenTime == 0:
                 if sound.get() == 0:
                     playsound('food.mp3')
-        if meatTime < -120:
+        if krakenTime < -120:
             krakenStatus = "Burned"
             Kraken_Label.config(bg="Black")
             Kraken_Label.config(fg="White")
@@ -246,7 +269,8 @@ def timer():
             cookingKraken = False
             krakenStatus = " "
             krakenTime = 0
-    Kraken_Label['text'] = str(krakenTime)
+        Kraken_Label['text'] = str(krakenTime)
+        Kraken_Burn_Label['text'] = str(krakenBurnTime)
 
     Fish_Status_Label.config(text=fishStatus)
     Trophy_Status_Label.config(text=trophyStatus)
@@ -262,6 +286,7 @@ def timer():
 
 def setTimer(x):
     global fishTime
+    global fishBurnTime
     global cookingFish
     global fishStatus
     global cookingTrophy
@@ -285,6 +310,7 @@ def setTimer(x):
             fishStatus = "Cooking"
             fishTime = 40
             trophyTime = 0
+            trophyBurnTime = 0
             meatTime = 0
             krakenTime = 0
             Trophy_Label.config(bg="Light Grey")
@@ -301,6 +327,7 @@ def setTimer(x):
             Fish_Label.config(fg="Black")
             fishStatus = " "
             fishTime = 0
+            fishBurnTime = 0
     elif x == 'trophy':
         if cookingTrophy == False:
             cookingTrophy = True
@@ -328,6 +355,7 @@ def setTimer(x):
             Trophy_Label.config(fg="Black")
             trophyStatus = " "
             trophyTime = 0
+            trophyBurnTime = 0
     elif x == 'meat':
         if cookingMeat == False:
             cookingMeat = True
@@ -355,6 +383,7 @@ def setTimer(x):
             Meat_Label.config(fg="Black")
             meatStatus = " "
             meatTime = 0
+            meatBurnTime = 0
     elif x == 'kraken':
         if cookingKraken == False:
             cookingKraken = True
@@ -381,10 +410,12 @@ def setTimer(x):
             Kraken_Label.config(fg="Black")
             krakenStatus = " "
             krakenTime = 0
+            krakenBurnTime = 0
+    updateLabels()
 
 
 main = tk.Tk()
-main.title("SoT Cooking Timer 0.3")
+main.title("SoT Cooking Timer 0.4")
 worldMap = tk.PhotoImage(file="Map4.png")
 
 fish_image = tk.PhotoImage(file="fish.png")
@@ -392,37 +423,64 @@ trophy_image = tk.PhotoImage(file="TrophyFish.png")
 meat_image = tk.PhotoImage(file="meat.png")
 kraken_image = tk.PhotoImage(file="LegendMeat.png")
 
+Button_Label = tk.Label(main, text="Start / Stop Button")
+Button_Label.config(bg="Black")
+Button_Label.config(fg="White")
+Button_Label.grid(row=0, column=0)
+Cook_Timer_Label = tk.Label(main, text="Time till cooked")
+# Cook_Timer_Label.config(bg="Black")
+# Cook_Timer_Label.config(fg="White")
+Cook_Timer_Label.grid(row=0, column=1)
+Burn_Timer_Label = tk.Label(main, text="Time till burned")
+Burn_Timer_Label.config(bg="Black")
+Burn_Timer_Label.config(fg="White")
+Burn_Timer_Label.grid(row=0, column=2)
+Food_Status_Label = tk.Label(main, text="Food Status")
+Food_Status_Label.grid(row=0, column=3)
+
 Fish_Button = tk.Button(main, image=fish_image, text="Fish", command=lambda: setTimer('fish'))
-Fish_Button.grid(row=0, column=0)
+Fish_Button.grid(row=1, column=0)
 Fish_Label = tk.Label(main, text=str(fishTime))
 Fish_Label.config(bg="Light Grey", width=5, height=5)
-Fish_Label.grid(row=0, column=1)
+Fish_Label.grid(row=1, column=1)
 Fish_Status_Label = tk.Label(main, text=fishStatus)
-Fish_Status_Label.grid(row=0, column=2)
+Fish_Status_Label.grid(row=1, column=3)
+Fish_Burn_Label = tk.Label(main, text=str(fishBurnTime))
+Fish_Burn_Label.config(bg="Black", fg="White", width=5, height=5)
+Fish_Burn_Label.grid(row=1, column=2)
 
 Trophy_Button = tk.Button(main, image=trophy_image, text="Trophy Fish", command=lambda: setTimer('trophy'))
-Trophy_Button.grid(row=1, column=0)
+Trophy_Button.grid(row=2, column=0)
 Trophy_Label = tk.Label(main, text=str(trophyTime))
 Trophy_Label.config(bg="Light Grey", width=5, height=5)
-Trophy_Label.grid(row=1, column=1)
+Trophy_Label.grid(row=2, column=1)
 Trophy_Status_Label = tk.Label(main, text=trophyStatus, width=8, height=8)
-Trophy_Status_Label.grid(row=1, column=2)
+Trophy_Status_Label.grid(row=2, column=3)
+Trophy_Burn_Label = tk.Label(main, text=str(trophyBurnTime))
+Trophy_Burn_Label.config(bg="Black", fg="White", width=5, height=5)
+Trophy_Burn_Label.grid(row=2, column=2)
 
 Meat_Button = tk.Button(main, image=meat_image, text="Normal Meat", command=lambda: setTimer('meat'))
-Meat_Button.grid(row=2, column=0)
+Meat_Button.grid(row=3, column=0)
 Meat_Label = tk.Label(main, text=str(meatTime))
 Meat_Label.config(bg="Light Grey", width=5, height=5)
-Meat_Label.grid(row=2, column=1)
+Meat_Label.grid(row=3, column=1)
 Meat_Status_Label = tk.Label(main, text=meatStatus, width=8, height=8)
-Meat_Status_Label.grid(row=2, column=2)
+Meat_Status_Label.grid(row=3, column=3)
+Meat_Burn_Label = tk.Label(main, text=str(meatBurnTime))
+Meat_Burn_Label.config(bg="Black", fg="White", width=5, height=5)
+Meat_Burn_Label.grid(row=3, column=2)
 
 Kraken_Button = tk.Button(main, image=kraken_image, text="Normal Meat", command=lambda: setTimer('kraken'))
-Kraken_Button.grid(row=3, column=0)
+Kraken_Button.grid(row=4, column=0)
 Kraken_Label = tk.Label(main, text=str(meatTime))
 Kraken_Label.config(bg="Light Grey", width=5, height=5)
-Kraken_Label.grid(row=3, column=1)
+Kraken_Label.grid(row=4, column=1)
 Kraken_Status_Label = tk.Label(main, text=meatStatus, width=8, height=8)
-Kraken_Status_Label.grid(row=3, column=2)
+Kraken_Status_Label.grid(row=4, column=3)
+Kraken_Burn_Label = tk.Label(main, text=str(krakenBurnTime))
+Kraken_Burn_Label.config(bg="Black", fg="White", width=5, height=5)
+Kraken_Burn_Label.grid(row=4, column=2)
 
 # Make Menu Bar
 menubar = tk.Menu(main)
