@@ -438,6 +438,7 @@ def setTimer(x):
 
 main = tk.Tk()
 main.title("SoT Cooking Timer 0.5")
+main.iconbitmap("fish.ico")
 worldMap = tk.PhotoImage(file="Map4.png")
 
 fish_image = tk.PhotoImage(file="fish.png")
@@ -450,8 +451,6 @@ Button_Label.config(bg="Black")
 Button_Label.config(fg="White")
 Button_Label.grid(row=0, column=0)
 Cook_Timer_Label = tk.Label(main, text="Time till cooked")
-# Cook_Timer_Label.config(bg="Black")
-# Cook_Timer_Label.config(fg="White")
 Cook_Timer_Label.grid(row=0, column=1)
 Burn_Timer_Label = tk.Label(main, text="Time till burned")
 Burn_Timer_Label.config(bg="Black")
