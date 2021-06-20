@@ -8,6 +8,7 @@
 
 import tkinter as tk
 from playsound import playsound
+from findSeaPort import findPort
 
 fishTime = 0
 fishBurnTime = 0
@@ -159,6 +160,27 @@ def islehopper():
                                 text="Amethyst Islehopper: A night time catch found at Devil's Ridge, Smuggler's Bay, Mermaid's Hideaway, The Crooked Masts, Old Faithful Isle, Flintlock Peninsula and Snake Island.").grid(
         row=6, column=0)
 
+
+def locatePort():
+    vert = []
+    hor = [
+        "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+        "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+    ]
+    count = 0
+    while len(vert) < 20:
+        count += 1
+        vert.append(str(count))
+    portWindow = tk.Toplevel(main)
+    vertVar = tk.StringVar()
+    horVar = tk.StringVar()
+    locationLabel = tk.Label(portWindow, text="current location: ")
+    locationLabel.grid(row=0, column=0)
+    vertLocation = tk.OptionMenu(portWindow, vertVar, *vert).grid(row=0, column=1)
+    horLocation = tk.OptionMenu(portWindow, horVar, *hor).grid(row=0, column=2)
+    vertVar.set("1")
+    horVar.set("A")
+    findButton = tk.Button(portWindow, text="Find Seaport", command=lambda: findPort(vertVar.get(), horVar.get())).grid(row=1, columnspan=3)
 
 def showMap():
     global worldMap
@@ -415,7 +437,7 @@ def setTimer(x):
 
 
 main = tk.Tk()
-main.title("SoT Cooking Timer 0.4")
+main.title("SoT Cooking Timer 0.5")
 worldMap = tk.PhotoImage(file="Map4.png")
 
 fish_image = tk.PhotoImage(file="fish.png")
@@ -488,6 +510,7 @@ main.config(menu=menubar)
 file_menu = tk.Menu(menubar)
 menubar.add_cascade(label="Tools", menu=file_menu)
 file_menu.add_command(label="Map", command=showMap)
+file_menu.add_command(label="Seaport Finder", command=locatePort)
 # fish menu
 fish_menu = tk.Menu(menubar)
 menubar.add_cascade(label="Fish", menu=fish_menu)
@@ -510,6 +533,7 @@ option_menu = tk.Menu(menubar)
 menubar.add_cascade(label="Options", menu=option_menu)
 option_menu.add_radiobutton(label="Sound On", variable=sound, value=0, command=soundOn)
 option_menu.add_radiobutton(label="Sound Off", variable=sound, value=1, command=soundOff)
+
 
 main.after(0, timer)
 tk.mainloop()
