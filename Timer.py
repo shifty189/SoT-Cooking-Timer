@@ -227,6 +227,13 @@ def timer():
                 fishTime = 0
         Fish_Label['text'] = str(trophyTime)
         Fish_Burn_Label['text'] = str(fishBurnTime)
+        if fishBurnTime < 1:
+            cookingFish = False
+            fishTime = 0
+            fishBurnTime = 0
+            Fish_Label.config(bg="Light Grey")
+            Fish_Label.config(fg="Black")
+            fishStatus = "Burned"
     if cookingTrophy:
         trophyTime -= 1
         trophyBurnTime = trophyTime + 90
@@ -249,6 +256,13 @@ def timer():
             trophyTime = 0
         Trophy_Label['text'] = str(fishTime)
         Trophy_Burn_Label['text'] = str(trophyBurnTime)
+        if trophyBurnTime < 1:
+            cookingTrophy = False
+            trophyTime = 0
+            trophyBurnTime = 0
+            Trophy_Label.config(bg="Light Grey")
+            Trophy_Label.config(fg="Black")
+            trophyStatus = "Burned"
     if cookingMeat:
         meatTime -= 1
         meatBurnTime = meatTime + 60
@@ -271,6 +285,13 @@ def timer():
             meatTime = 0
         Meat_Label['text'] = str(meatTime)
         Meat_Burn_Label['text'] = str(meatBurnTime)
+        if meatBurnTime < 1:
+            cookingMeat = False
+            meatTime = 0
+            meatBurnTime = 0
+            Meat_Label.config(bg="Light Grey")
+            Meat_Label.config(fg="Black")
+            meatStatus = "Burned"
     if cookingKraken:
         krakenTime -= 1
         krakenBurnTime = krakenTime + 120
@@ -293,6 +314,13 @@ def timer():
             krakenTime = 0
         Kraken_Label['text'] = str(krakenTime)
         Kraken_Burn_Label['text'] = str(krakenBurnTime)
+        if krakenBurnTime < 1:
+            cookingKraken = False
+            krakenTime = 0
+            krakenBurnTime = 0
+            Kraken_Label.config(bg="Light Grey")
+            Kraken_Label.config(fg="Black")
+            krakenStatus = "Burned"
 
     Fish_Status_Label.config(text=fishStatus)
     Trophy_Status_Label.config(text=trophyStatus)
@@ -437,7 +465,7 @@ def setTimer(x):
 
 
 main = tk.Tk()
-main.title("SoT Cooking Timer 0.5")
+main.title("SoT Cooking Timer 0.6")
 main.iconbitmap("fish.ico")
 worldMap = tk.PhotoImage(file="Map4.png")
 
