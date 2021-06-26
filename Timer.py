@@ -10,6 +10,8 @@ import tkinter as tk
 from playsound import playsound
 from findSeaPort import findPort
 
+version = 0.7
+buildDate = "6/26/2021"
 fishTime = 0
 fishBurnTime = 0
 trophyTime = 0
@@ -27,6 +29,15 @@ trophyStatus = " "
 meatStatus = " "
 krakenStatus = " "
 
+
+def showHelp():
+    # global version
+
+    help_window = tk.Toplevel(main)
+    version_label = tk.Label(help_window, text="SoT Cooking Timer Version: " + str(version))
+    version_label.pack()
+    date_label = tk.Label(help_window, text="Build Date: " + buildDate)
+    date_label.pack()
 
 def updateLabels():
     Fish_Label['text'] = str(fishTime)
@@ -465,7 +476,7 @@ def setTimer(x):
 
 
 main = tk.Tk()
-main.title("SoT Cooking Timer 0.6")
+main.title("SoT Cooking Timer " + str(version))
 main.iconbitmap("fish.ico")
 worldMap = tk.PhotoImage(file="Map4.png")
 
@@ -560,6 +571,10 @@ option_menu = tk.Menu(menubar)
 menubar.add_cascade(label="Options", menu=option_menu)
 option_menu.add_radiobutton(label="Sound On", variable=sound, value=0, command=soundOn)
 option_menu.add_radiobutton(label="Sound Off", variable=sound, value=1, command=soundOff)
+# Help menu
+help_menu = tk.Menu(menubar)
+menubar.add_cascade(label='Help', menu=help_menu)
+help_menu.add_command(label="About", command=showHelp)
 
 
 main.after(0, timer)
