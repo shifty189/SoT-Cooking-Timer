@@ -10,8 +10,8 @@ import tkinter as tk
 from playsound import playsound
 from findSeaPort import findPort
 
-version = 0.7
-buildDate = "6/26/2021"
+version = 0.9
+buildDate = "7/13/2021"
 fishTime = 0
 fishBurnTime = 0
 trophyTime = 0
@@ -29,6 +29,77 @@ trophyStatus = " "
 meatStatus = " "
 krakenStatus = " "
 
+
+
+def howTo():
+    how_window = tk.Toplevel(main)
+    #Time
+    timerFrame = tk.Frame(how_window, pady=10)
+    timerFrame.grid(row=0, column=0)
+    howLabel = tk.Label(timerFrame, text="Timer (Tools Menu)")
+    howLabel.config(bg="Black", fg="White")
+    howLabel.pack()
+    howLabel2 = tk.Label(timerFrame, bg="White", text=
+    "You can have one timer going at a time, pressing any of the 4 buttons").pack()
+    howLabel3 = tk.Label(timerFrame, bg="White", text=
+    "will start the timer. Pressing a button while a timer is active, will stop it.").pack()
+    # Fish
+    fishFrame = tk.Frame(how_window, pady=15)
+    fishFrame.grid(row=0, column=1)
+    fishLabel = tk.Label(fishFrame, bg="Black", fg="White", text="Fish Information (Fish Menu)").pack()
+    fishLabel2 = tk.Label(fishFrame, bg="White", text="Each fish type can be slected for infrmation about").pack()
+    fishLabel3 = tk.Label(fishFrame, bg="White", text="where to catch and what bait to use or all fish menu").pack()
+    fishLabel4 = tk.Label(fishFrame, padx=15, bg="White",
+                          text="will list this information about all fish types.").pack()
+    #Seaport
+    seaportFrame = tk.Frame(how_window, pady=10)
+    seaportFrame.grid(row=2, column=0)
+    seaportLabel = tk.Label(seaportFrame, bg="Black", fg="White", text="How to use Seaport Finder (Tools Menu)").pack()
+    seaportLabel2 = tk.Label(seaportFrame, bg="White", text="Enter what map square your in and a pop up will").pack()
+    seaportLabel3 = tk.Label(seaportFrame, bg="White", text="tell you the closest seaport and it map square").pack()
+    #Mondy
+    moneyFrame = tk.Frame(how_window, pady=15)
+    moneyFrame.grid(row=1, column=0)
+    moneyLabel = tk.Label(moneyFrame, bg="Black", fg="White", text="Money Calculator (Tools Menu)").pack()
+    moneyLabel2 = tk.Label(moneyFrame, bg="White", text="Enter how much gold you start your voyage with in 'Starting Gold'").pack()
+    moneyLabel3 = tk.Label(moneyFrame, bg="White", text="Enter how much gold you end up with in 'Ending Gold'").pack()
+    moneyLabel4 = tk.Label(moneyFrame, bg="White", text="Press 'Calculate' and see how much money you made!").pack()
+    #Sound
+    soundFrame = tk.Frame(how_window, pady=25)
+    soundFrame.grid(row=1, column=1)
+    soundLabel = tk.Label(soundFrame, bg="Black", fg="White", text="Sound Options (Options Menu)").pack()
+    soundLabel2 = tk.Label(soundFrame, bg="White", text="In the Options menu you can turn audio alerts on or off.").pack()
+
+
+def moneyUpdate(x, y):
+    global moneyResult
+    goldTemp = y-x
+    goldTemp = "{:,}".format(goldTemp)
+    moneyResult.set(goldTemp)
+
+
+def moneyCalc():
+    global moneyResult
+    moneyResult = tk.IntVar()
+    moneyResult.set(0)
+    startGold = tk.IntVar()
+    startGold.set(0)
+    endGold = tk.IntVar()
+    endGold.set(0)
+    moneyResult.set(0)
+    money_window = tk.Toplevel(main)
+    gold_start_label = tk.Label(money_window, text='Starting Gold:').grid(row=0, column=0)
+    gold_start_entry = tk.Entry(money_window, textvariable=startGold).grid(row=0, column=1)
+    gold_end_label = tk.Label(money_window, text='Ending Gold:').grid(row=1, column=0)
+    gold_end_entry = tk.Entry(money_window, textvariable=endGold).grid(row=1, column=1)
+    show_gold = tk.Label(money_window, textvariable=moneyResult)
+    show_gold.grid(row=2, column=1)
+    show_more_gold = tk.Label(money_window, text="Gold increased this run: ").grid(row=2, column=0)
+
+    updateButton = tk.Button(money_window,
+                             text="Calculate",
+                             command=lambda: moneyUpdate(startGold.get(), endGold.get()))
+    updateButton.grid(row=3, columnspan=2)
 
 def showHelp():
     # global version
@@ -546,9 +617,11 @@ Kraken_Burn_Label.grid(row=4, column=2)
 menubar = tk.Menu(main)
 main.config(menu=menubar)
 file_menu = tk.Menu(menubar)
+# tools menu
 menubar.add_cascade(label="Tools", menu=file_menu)
 file_menu.add_command(label="Map", command=showMap)
 file_menu.add_command(label="Seaport Finder", command=locatePort)
+file_menu.add_command(label="Money calculator", command=moneyCalc)
 # fish menu
 fish_menu = tk.Menu(menubar)
 menubar.add_cascade(label="Fish", menu=fish_menu)
@@ -575,6 +648,7 @@ option_menu.add_radiobutton(label="Sound Off", variable=sound, value=1, command=
 help_menu = tk.Menu(menubar)
 menubar.add_cascade(label='Help', menu=help_menu)
 help_menu.add_command(label="About", command=showHelp)
+help_menu.add_command(label="How To Use", command=howTo)
 
 
 main.after(0, timer)
