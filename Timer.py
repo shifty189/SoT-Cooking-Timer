@@ -10,8 +10,8 @@ import tkinter as tk
 from playsound import playsound
 from findSeaPort import findPort
 
-version = 0.9
-buildDate = "7/13/2021"
+version = 0.10
+buildDate = "10/22/2022"
 fishTime = 0
 fishBurnTime = 0
 trophyTime = 0
@@ -250,19 +250,20 @@ def locatePort():
         "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
     ]
     count = 0
+    global Spyglass_image
     while len(vert) < 20:
         count += 1
         vert.append(str(count))
     portWindow = tk.Toplevel(main)
     vertVar = tk.StringVar()
     horVar = tk.StringVar()
-    locationLabel = tk.Label(portWindow, text="current location: ")
+    locationLabel = tk.Label(portWindow, text="Current location: ")
     locationLabel.grid(row=0, column=0)
     vertLocation = tk.OptionMenu(portWindow, vertVar, *vert).grid(row=0, column=1)
     horLocation = tk.OptionMenu(portWindow, horVar, *hor).grid(row=0, column=2)
     vertVar.set("1")
     horVar.set("A")
-    findButton = tk.Button(portWindow, text="Find Seaport", command=lambda: findPort(vertVar.get(), horVar.get())).grid(row=1, columnspan=3)
+    findButton = tk.Button(portWindow, image=Spyglass_image, text="Find Seaport", command=lambda: findPort(vertVar.get(), horVar.get())).grid(row=1, columnspan=3)
 
 def showMap():
     global worldMap
@@ -555,6 +556,7 @@ fish_image = tk.PhotoImage(file="fish.png")
 trophy_image = tk.PhotoImage(file="TrophyFish.png")
 meat_image = tk.PhotoImage(file="meat.png")
 kraken_image = tk.PhotoImage(file="LegendMeat.png")
+Spyglass_image = tk.PhotoImage(file="Spyglass.png")
 
 Button_Label = tk.Label(main, text="Start / Stop Button")
 Button_Label.config(bg="Black")
