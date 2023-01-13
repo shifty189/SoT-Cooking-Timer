@@ -12,8 +12,8 @@ from Vails import *
 from playsound import playsound
 from findSeaPort import findPort
 
-version = "0.12 (VailPatch)"
-buildDate = "1/12/2023"
+version = "0.13 (VailPatch)"
+buildDate = "1/13/2023"
 recycleSave = []
 fishTime = 0
 fishBurnTime = 0
