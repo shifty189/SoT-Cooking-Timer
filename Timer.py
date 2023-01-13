@@ -7,11 +7,14 @@
 # Kraken and Meg 100s undercook, 120s cook, 240s burn
 
 import tkinter as tk
+from Fish import *
+from Vails import *
 from playsound import playsound
 from findSeaPort import findPort
 
-version = 0.9
-buildDate = "7/13/2021"
+version = "0.12"
+buildDate = "1/12/2023"
+recycleSave = []
 fishTime = 0
 fishBurnTime = 0
 trophyTime = 0
@@ -30,9 +33,15 @@ meatStatus = " "
 krakenStatus = " "
 
 
+def vailHelp(main):
+    vailWindow = tk.Toplevel(main)
+    vailWindow.iconbitmap("fish.ico")
+    sudd_button = tk.Button(vailWindow, text='Find Sudds', command=lambda: find_sudds(vailWindow, recycleSave))
+    sudd_button.pack()
 
 def howTo():
     how_window = tk.Toplevel(main)
+    how_window.iconbitmap("fish.ico")
     #Time
     timerFrame = tk.Frame(how_window, pady=10)
     timerFrame.grid(row=0, column=0)
@@ -80,6 +89,7 @@ def moneyUpdate(x, y):
 
 def moneyCalc():
     global moneyResult
+    global Coin_image
     moneyResult = tk.IntVar()
     moneyResult.set(0)
     startGold = tk.IntVar()
@@ -88,27 +98,31 @@ def moneyCalc():
     endGold.set(0)
     moneyResult.set(0)
     money_window = tk.Toplevel(main)
+    money_window.iconbitmap("fish.ico")
     gold_start_label = tk.Label(money_window, text='Starting Gold:').grid(row=0, column=0)
     gold_start_entry = tk.Entry(money_window, textvariable=startGold).grid(row=0, column=1)
     gold_end_label = tk.Label(money_window, text='Ending Gold:').grid(row=1, column=0)
     gold_end_entry = tk.Entry(money_window, textvariable=endGold).grid(row=1, column=1)
     show_gold = tk.Label(money_window, textvariable=moneyResult)
     show_gold.grid(row=2, column=1)
-    show_more_gold = tk.Label(money_window, text="Gold increased this run: ").grid(row=2, column=0)
+    show_more_gold = tk.Label(money_window, text="Gold earned this run: ").grid(row=2, column=0)
 
     updateButton = tk.Button(money_window,
-                             text="Calculate",
+                             text="Calculate", image=Coin_image,
                              command=lambda: moneyUpdate(startGold.get(), endGold.get()))
     updateButton.grid(row=3, columnspan=2)
+
 
 def showHelp():
     # global version
 
     help_window = tk.Toplevel(main)
+    help_window.iconbitmap("fish.ico")
     version_label = tk.Label(help_window, text="SoT Cooking Timer Version: " + str(version))
     version_label.pack()
     date_label = tk.Label(help_window, text="Build Date: " + buildDate)
     date_label.pack()
+
 
 def updateLabels():
     Fish_Label['text'] = str(fishTime)
@@ -129,120 +143,6 @@ def soundOff():
     sound.set(1)
 
 
-def allFish():
-    allfishWindow = tk.Toplevel(main)
-    allSplash = tk.Label(allfishWindow, text="Splashtail's can be found anywhere, no need for bait.", fg="Red",
-                         font=("Arial", 18)).pack()
-    allPondie = tk.Label(allfishWindow, text="Pondie's are found in fresh water ponds. No bait is needed", fg="Blue",
-                         font=("Arial", 18)).pack()
-    allPlentifin = tk.Label(allfishWindow,
-                            text="Plentifin's are found in the Shores of Plenty. Use Earthworms for bait", fg="Red",
-                            font=("Arial", 18)).pack()
-    allWildsplash = tk.Label(allfishWindow, text="Wildsplash's are found in the Wilds. use Earthworms for bait",
-                             fg="Blue", font=("Arial", 18)).pack()
-    allAncientscale = tk.Label(allfishWindow,
-                               text="Ancientscale's can be found in the ancient isles. Use Leeches for bait", fg="Red",
-                               font=("Arial", 18)).pack()
-    allDevilfish = tk.Label(allfishWindow, text="Devilfish are found in the Devil's Roar. use Grubs for bait",
-                            fg="Blue", font=("Arial", 18)).pack()
-    allBattlegill = tk.Label(allfishWindow,
-                             text="Battlegill are found near skeleton ships and active skull forts. use Grubs for bait",
-                             fg="Red", font=("Arial", 18)).pack()
-    allWrecker = tk.Label(allfishWindow, text="Wreckers are found near shipwrecks. use Earthworms as bait.", fg="Blue",
-                          font=("Arial", 18)).pack()
-    allStormfish = tk.Label(allfishWindow, text="Stormfish are found in the storm. Use Leeches as bait.", fg="Red",
-                            font=("Arial", 18)).pack()
-    allIslehopper = tk.Label(allfishWindow, text="Islehoppers are only found close to islands. No bait is needed",
-                             fg="Blue", font=("Arial", 18)).pack()
-    allIslehopper2 = tk.Label(allfishWindow,
-                              text="Open the Islehopers section from the fish menu for details on where to find each kind of Islehopper",
-                              fg="Blue", font=("Arial", 18)).pack()
-
-
-def splashtail():
-    splashtailWindow = tk.Toplevel(main)
-    splashtailWindow.title('Splashtail')
-    splashLabel = tk.Label(splashtailWindow, text="Splashtail's can be found anywhere, no need for bait.").pack()
-
-
-def pondie():
-    pondieWindow = tk.Toplevel(main)
-    pondieWindow.title('Pondie')
-    pondieLabel = tk.Label(pondieWindow, text="Pondie's are found in fresh water ponds. No bait is needed").pack()
-
-
-def plentifin():
-    plentifinWindow = tk.Toplevel(main)
-    plentifinWindow.title('Plentifin')
-    plentifinLabel = tk.Label(plentifinWindow,
-                              text="Plentifin's are found in the Shores of Plenty. Use Earthworms for bait").pack()
-
-
-def wildsplash():
-    wildsplashWindow = tk.Toplevel(main)
-    wildsplashWindow.title('Wildsplash')
-    wildsplashLabel = tk.Label(wildsplashWindow,
-                               text="Wildsplash's are found in the Wilds. use Earthworms for bait").pack()
-
-
-def ancientscales():
-    ancientscaleWindow = tk.Toplevel(main)
-    ancientscaleWindow.title('Ancientscale')
-    ancientscaleLabel = tk.Label(ancientscaleWindow,
-                                 text="Ancientscale's can be found in the ancient isles. Use Leeches for bait").pack()
-
-
-def devilfish():
-    devilfishWindow = tk.Toplevel(main)
-    devilfishWindow.title('Devilfish')
-    devilfishLabel = tk.Label(devilfishWindow,
-                              text="Devilfish are found in the Devil's Roar. use Grubs for bait").pack()
-
-
-def battlegill():
-    battlegilWindow = tk.Toplevel(main)
-    battlegilWindow.title('Battlegill')
-    battlegilLabel = tk.Label(battlegilWindow,
-                              text="Battlegill are found near skeleton ships and active skull forts. use Grubs for bait"
-                              ).pack()
-
-
-def wrecker():
-    wreckerWindow = tk.Toplevel(main)
-    wreckerWindow.title('Wrecker')
-    wreckerLabel = tk.Label(wreckerWindow, text="Wreckers are found near shipwrecks. use Earthworms as bait.").pack()
-
-
-def stormfish():
-    stormfishWindow = tk.Toplevel(main)
-    stormfishWindow.title('Stormfish')
-    stormfishLabel = tk.Label(stormfishWindow, text="Stormfish are found in the storm. Use Leeches as bait.").pack()
-
-
-def islehopper():
-    islehopperWindow = tk.Toplevel(main)
-    islehopperWindow.title('Islehopper')
-    islehopperLabel = tk.Label(islehopperWindow,
-                               text="Islehoppers are only found close to islands. No bait is needed").grid(row=0,
-                                                                                                           column=0)
-    islehopperLabel2 = tk.Label(islehopperWindow, text=" ").grid(row=1, column=0)
-    islehopperLabel3 = tk.Label(islehopperWindow,
-                                text="Stone Islehopper: Found at Shipwreck Bay, Shark Bait Cove, Crook's Hollow, Sailor's Bounty, Cannon Cove and Fetcher's Rest.").grid(
-        row=2, column=0)
-    islehopperLabel4 = tk.Label(islehopperWindow,
-                                text="Moss Islehopper: Found at Ashen Reaches, Thieves' Haven, Marauder's Arch, Lone Cove, Wanderers Refuge and Ruby's Fall.").grid(
-        row=3, column=0)
-    islehopperLabel5 = tk.Label(islehopperWindow,
-                                text="Honey Islehopper: Found at Discovery Ridge, Plunder Valley, Kraken's Fall, Sunken Grove, Crescent Isle and The Devil's Thirst.").grid(
-        row=4, column=0)
-    islehopperLabel6 = tk.Label(islehopperWindow,
-                                text="Raven Islehopper: A rare sight at any large island. (TIP: Fish for this variant during the day at any island where Amethyst Islehoppers are found. You will only get Splashtails or Raven Islehoppers.)").grid(
-        row=5, column=0)
-    islehopperLabel7 = tk.Label(islehopperWindow,
-                                text="Amethyst Islehopper: A night time catch found at Devil's Ridge, Smuggler's Bay, Mermaid's Hideaway, The Crooked Masts, Old Faithful Isle, Flintlock Peninsula and Snake Island.").grid(
-        row=6, column=0)
-
-
 def locatePort():
     vert = []
     hor = [
@@ -250,24 +150,27 @@ def locatePort():
         "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
     ]
     count = 0
+    global Spyglass_image
     while len(vert) < 20:
         count += 1
         vert.append(str(count))
     portWindow = tk.Toplevel(main)
+    portWindow.iconbitmap("fish.ico")
     vertVar = tk.StringVar()
     horVar = tk.StringVar()
-    locationLabel = tk.Label(portWindow, text="current location: ")
+    locationLabel = tk.Label(portWindow, text="Current location: ")
     locationLabel.grid(row=0, column=0)
     vertLocation = tk.OptionMenu(portWindow, vertVar, *vert).grid(row=0, column=1)
     horLocation = tk.OptionMenu(portWindow, horVar, *hor).grid(row=0, column=2)
     vertVar.set("1")
     horVar.set("A")
-    findButton = tk.Button(portWindow, text="Find Seaport", command=lambda: findPort(vertVar.get(), horVar.get())).grid(row=1, columnspan=3)
+    findButton = tk.Button(portWindow, image=Spyglass_image, text="Find Seaport", command=lambda: findPort(vertVar.get(), horVar.get())).grid(row=1, columnspan=3)
+
 
 def showMap():
     global worldMap
     secondWindow = tk.Toplevel(main)
-    # secondLabel = tk.Label(secondWindow, image=worldMap)
+    secondWindow.iconbitmap("fish.ico")
     secondLabel = tk.Canvas(secondWindow, width=800, height=700)
     wMap = secondLabel.create_image([400, 375], image=worldMap)
     secondLabel.grid(row=0, column=0)
@@ -547,14 +450,16 @@ def setTimer(x):
 
 
 main = tk.Tk()
-main.title("SoT Cooking Timer " + str(version))
+main.title(f"SoT Cooking Timer {str(version)}")
 main.iconbitmap("fish.ico")
-worldMap = tk.PhotoImage(file="Map4.png")
 
+worldMap = tk.PhotoImage(file="Map4.png")
 fish_image = tk.PhotoImage(file="fish.png")
 trophy_image = tk.PhotoImage(file="TrophyFish.png")
 meat_image = tk.PhotoImage(file="meat.png")
 kraken_image = tk.PhotoImage(file="LegendMeat.png")
+Spyglass_image = tk.PhotoImage(file="Spyglass.png")
+Coin_image = tk.PhotoImage(file="Coin.png")
 
 Button_Label = tk.Label(main, text="Start / Stop Button")
 Button_Label.config(bg="Black")
@@ -622,21 +527,22 @@ menubar.add_cascade(label="Tools", menu=file_menu)
 file_menu.add_command(label="Map", command=showMap)
 file_menu.add_command(label="Seaport Finder", command=locatePort)
 file_menu.add_command(label="Money calculator", command=moneyCalc)
+file_menu.add_command(label="Vail Voyage helper", command=lambda: vailHelp(main))
 # fish menu
 fish_menu = tk.Menu(menubar)
 menubar.add_cascade(label="Fish", menu=fish_menu)
-fish_menu.add_command(label="Splashtail", command=splashtail)
-fish_menu.add_command(label="Pondie", command=pondie)
-fish_menu.add_command(label="Anchientscale", command=ancientscales)
-fish_menu.add_command(label="Plentifin", command=plentifin)
-fish_menu.add_command(label="Wildsplash", command=wildsplash)
-fish_menu.add_command(label="Devilfish", command=devilfish)
-fish_menu.add_command(label="Battlegill", command=battlegill)
-fish_menu.add_command(label="Wrecker", command=wrecker)
-fish_menu.add_command(label="Stormfish", command=stormfish)
-fish_menu.add_command(label="Islehopper", command=islehopper)
+fish_menu.add_command(label="Splashtail", command=lambda: splashtail(main))
+fish_menu.add_command(label="Pondie", command=lambda: pondie(main))
+fish_menu.add_command(label="Anchientscale", command=lambda: ancientscales(main))
+fish_menu.add_command(label="Plentifin", command=lambda: plentifin(main))
+fish_menu.add_command(label="Wildsplash", command=lambda: wildsplash(main))
+fish_menu.add_command(label="Devilfish", command=lambda: devilfish(main))
+fish_menu.add_command(label="Battlegill", command=lambda: battlegill(main))
+fish_menu.add_command(label="Wrecker", command=lambda: wrecker(main))
+fish_menu.add_command(label="Stormfish", command=lambda: stormfish(main))
+fish_menu.add_command(label="Islehopper", command=lambda: islehopper(main))
 fish_menu.add_separator()
-fish_menu.add_command(label="All Fish", command=allFish)
+fish_menu.add_command(label="All Fish", command=lambda: allFish(main))
 # options menu
 sound = tk.IntVar(main, name="sound")
 sound.set(0)
