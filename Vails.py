@@ -7,6 +7,89 @@ def clearWindow(window):
     for widget in window.winfo_children():
         widget.destroy()
 
+def runinsDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window,text="Mermaid’s Hideaway, abandonded camp to the south")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\ruins.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+
+def highmermaidDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window,
+                         text="Mermaid’s Hideaway, high on the south side by an abandoned camp")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\highmermaid.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+
+def beachcampDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window,
+                         text="Cannon Cove, West side of the island inside the cove (C shape)")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\beachcamp.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+
+def forgottenDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+        This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window,
+                         text="Cannon Cove, Southeast beach by some barrels")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\forgotten.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+def silentDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window,
+                         text="Lone Cove, central area near the drunks grave")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\silent.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+
+def lonerockDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+        This is to prevent trash collection from removing the image before its used
+        TODO: add image"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window,
+                         text="Lone Cove, center of the island by a single large rock")
+    infoLabel.pack(pady=3)
+    # image = tk.PhotoImage(file="assets\\time.gif")
+    # list.append(image)
+    # imageLabel = tk.Label(window, image=image)
+    # imageLabel.pack()
+
 
 def timeDisplay(window, list):
     """the list argument is only for a global list to store the image file.
@@ -133,7 +216,10 @@ def find_sudds(window, list):
     clearWindow(window)
     title_frame = tk.Frame(window)
     title_frame.pack()
-    title_label = tk.Label(title_frame, text="select the in game text for a description of where to find Sudds")
+    title_label = tk.Label(title_frame,
+                           text="Select the in game text for a description of where to find Sudds",
+                           foreground='Red'
+                           )
     title_label.pack()
     location_frame = tk.Frame(window)
     location_frame.pack()
@@ -184,3 +270,39 @@ def find_sudds(window, list):
                             command=lambda x = window: timeDisplay(x, list)
                             )
     time_button.pack(pady=5)
+    lonerock_text = "Lone Cove, lone rock, standing tall. Come and find me, I have something important to give you"
+    lonerock_button = tk.Button(location_frame,
+                                text= lonerock_text,
+                                command=lambda x = window: lonerockDisplay(x, list)
+                                )
+    lonerock_button.pack(pady=5)
+    silent_text = "Silent as the grave, oh yes I am. Come to Lone Cove and I'll reveal the location of the stone"
+    silent_button = tk.Button(location_frame,
+                              text= silent_text,
+                              command=lambda x = window: silentDisplay(x, list)
+                              )
+    silent_button.pack()
+    forgotten_text = "A castaway left on the shore, forgotten. Like the Veil Stone, forgotten until people sought its power once more. Come and find me on Cannon Cove"
+    forgotten_button = tk.Button(location_frame,
+                                 text= forgotten_text,
+                                 command=lambda x = window: forgottenDisplay(x, list)
+                                 )
+    forgotten_button.pack(pady=5)
+    beachcamp_text = "Meet me at the beach camp on Cannon Cove and I'll share what I know"
+    beachcamp_button = tk.Button(location_frame,
+                                 text=beachcamp_text,
+                                 command=lambda x = window: beachcampDisplay(x, list)
+                                 )
+    beachcamp_button.pack(pady=5)
+    highmermaid_text = "High on Mermaid's Hideaway, great vantage point. Much to tell you, too much, must get it written down. Two worlds that must never be one. Hurry"
+    highmermaid_button = tk.Button(location_frame,
+                                   text= highmermaid_text,
+                                   command=lambda x = window: highmermaidDisplay(x, list)
+                                   )
+    highmermaid_button.pack(pady=5)
+    runins_text = "I'll wait for you in the ruins on Mermaid's Hideaway. Make haste, this knowledge must not fall into the wrong hands"
+    runins_button = tk.Button(location_frame,
+                              text=runins_text,
+                              command=lambda x = window: runinsDisplay(x, list)
+                              )
+    runins_button.pack(pady=5)
