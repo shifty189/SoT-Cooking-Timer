@@ -12,7 +12,7 @@ from Vails import *
 from playsound import playsound
 from findSeaPort import findPort
 
-version = "0.14 (VailPatch)"
+version = "0.14.01 (VailPatch)"
 buildDate = "1/13/2023"
 recycleSave = []
 fishTime = 0
@@ -35,13 +35,13 @@ krakenStatus = " "
 
 def vailHelp(main):
     vailWindow = tk.Toplevel(main)
-    vailWindow.iconbitmap("fish.ico")
+    vailWindow.iconbitmap("assets\\fish.ico")
     sudd_button = tk.Button(vailWindow, text='Find Sudds', command=lambda: find_sudds(vailWindow, recycleSave))
     sudd_button.pack()
 
 def howTo():
     how_window = tk.Toplevel(main)
-    how_window.iconbitmap("fish.ico")
+    how_window.iconbitmap("assets\\fish.ico")
     #Time
     timerFrame = tk.Frame(how_window, pady=10)
     timerFrame.grid(row=0, column=0)
@@ -98,7 +98,7 @@ def moneyCalc():
     endGold.set(0)
     moneyResult.set(0)
     money_window = tk.Toplevel(main)
-    money_window.iconbitmap("fish.ico")
+    money_window.iconbitmap("assets\\fish.ico")
     gold_start_label = tk.Label(money_window, text='Starting Gold:').grid(row=0, column=0)
     gold_start_entry = tk.Entry(money_window, textvariable=startGold).grid(row=0, column=1)
     gold_end_label = tk.Label(money_window, text='Ending Gold:').grid(row=1, column=0)
@@ -117,7 +117,7 @@ def showHelp():
     # global version
 
     help_window = tk.Toplevel(main)
-    help_window.iconbitmap("fish.ico")
+    help_window.iconbitmap("assets\\fish.ico")
     version_label = tk.Label(help_window, text="SoT Cooking Timer Version: " + str(version))
     version_label.pack()
     date_label = tk.Label(help_window, text="Build Date: " + buildDate)
@@ -155,7 +155,7 @@ def locatePort():
         count += 1
         vert.append(str(count))
     portWindow = tk.Toplevel(main)
-    portWindow.iconbitmap("fish.ico")
+    portWindow.iconbitmap("assets\\fish.ico")
     vertVar = tk.StringVar()
     horVar = tk.StringVar()
     locationLabel = tk.Label(portWindow, text="Current location: ")
@@ -170,7 +170,7 @@ def locatePort():
 def showMap():
     global worldMap
     secondWindow = tk.Toplevel(main)
-    secondWindow.iconbitmap("fish.ico")
+    secondWindow.iconbitmap("assets\\fish.ico")
     secondLabel = tk.Canvas(secondWindow, width=800, height=700)
     wMap = secondLabel.create_image([400, 375], image=worldMap)
     secondLabel.grid(row=0, column=0)
@@ -201,7 +201,7 @@ def timer():
             fishStatus = "Cooked"
             if fishTime == 0:
                 if sound.get() == 0:
-                    playsound('fish.mp3')
+                    playsound('assets\\fish.mp3')
             if fishTime < -40:
                 fishStatus = "Burned"
                 Fish_Label.config(bg="Black")
@@ -230,7 +230,7 @@ def timer():
             trophyStatus = "Cooked"
             if trophyTime == 0:
                 if sound.get() == 0:
-                    playsound('fish.mp3')
+                    playsound('assets\\fish.mp3')
         if trophyTime < -119:
             trophyStatus = "Burning"
             Trophy_Label.config(bg="Black")
@@ -259,7 +259,7 @@ def timer():
             meatStatus = "Cooked"
             if meatTime == 0:
                 if sound.get() == 0:
-                    playsound('food.mp3')
+                    playsound('assets\\food.mp3')
         if meatTime < -60:
             meatStatus = "Burned"
             Meat_Label.config(bg="Black")
@@ -288,7 +288,7 @@ def timer():
             krakenStatus = "Cooked"
             if krakenTime == 0:
                 if sound.get() == 0:
-                    playsound('food.mp3')
+                    playsound('assets\\food.mp3')
         if krakenTime < -120:
             krakenStatus = "Burned"
             Kraken_Label.config(bg="Black")
@@ -451,15 +451,15 @@ def setTimer(x):
 
 main = tk.Tk()
 main.title(f"SoT Cooking Timer {str(version)}")
-main.iconbitmap("fish.ico")
+main.iconbitmap("assets\\fish.ico")
 
-worldMap = tk.PhotoImage(file="Map4.png")
-fish_image = tk.PhotoImage(file="fish.png")
-trophy_image = tk.PhotoImage(file="TrophyFish.png")
-meat_image = tk.PhotoImage(file="meat.png")
-kraken_image = tk.PhotoImage(file="LegendMeat.png")
-Spyglass_image = tk.PhotoImage(file="Spyglass.png")
-Coin_image = tk.PhotoImage(file="Coin.png")
+worldMap = tk.PhotoImage(file="assets\\Map4.png")
+fish_image = tk.PhotoImage(file="assets\\fish.png")
+trophy_image = tk.PhotoImage(file="assets\\TrophyFish.png")
+meat_image = tk.PhotoImage(file="assets\\meat.png")
+kraken_image = tk.PhotoImage(file="assets\\LegendMeat.png")
+Spyglass_image = tk.PhotoImage(file="assets\\Spyglass.png")
+Coin_image = tk.PhotoImage(file="assets\\Coin.png")
 
 Button_Label = tk.Label(main, text="Start / Stop Button")
 Button_Label.config(bg="Black")
