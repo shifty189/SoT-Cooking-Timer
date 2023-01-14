@@ -2,41 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a246b029-9485-475d-a033-f7f061f61995" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/SoT-Cooking-Timer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Coin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Spyglass.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/crescent_shape.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/cursedskulls.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/five-barnacle.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/library.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/olsudds.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/time.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fish.py" beforeDir="false" afterPath="$PROJECT_DIR$/Fish.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LegendMeat.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/LegendMeat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Map4.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Map4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Spyglass.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Timer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Timer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrophyFish.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/TrophyFish.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vails.py" beforeDir="false" afterPath="$PROJECT_DIR$/Vails.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crescent_shape.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cursedskulls.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fish.ico" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fish.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fish.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fish.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fish.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fish.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/five-barnacle.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/food.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/food.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kraken.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/kraken.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/meat.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/meat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/olsudds.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pig.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/pig.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/time.gif" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +21,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

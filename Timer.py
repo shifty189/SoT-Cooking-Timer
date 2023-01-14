@@ -12,7 +12,7 @@ from Vails import *
 from playsound import playsound
 from findSeaPort import findPort
 
-version = "0.14.01 (VailPatch)"
+version = "0.14.02 (VailPatch)"
 buildDate = "1/13/2023"
 recycleSave = []
 fishTime = 0
@@ -118,9 +118,9 @@ def showHelp():
 
     help_window = tk.Toplevel(main)
     help_window.iconbitmap("assets\\fish.ico")
-    version_label = tk.Label(help_window, text="SoT Cooking Timer Version: " + str(version))
+    version_label = tk.Label(help_window, text=f"SoT Cooking Timer Version: {str(version)}")
     version_label.pack()
-    date_label = tk.Label(help_window, text="Build Date: " + buildDate)
+    date_label = tk.Label(help_window, text=f"Build Date: {buildDate}")
     date_label.pack()
 
 
