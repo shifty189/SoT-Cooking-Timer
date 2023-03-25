@@ -11,9 +11,10 @@ from Fish import *
 from Vails import *
 from playsound import playsound
 from findSeaPort import findPort
+import datetime
 
-version = "0.14.03 (VailPatch)"
-buildDate = "1/13/2023"
+version = "0.14.04 (VailPatch)"
+buildDate = "3/25/2023"
 recycleSave = []
 fishTime = 0
 fishBurnTime = 0
@@ -32,6 +33,25 @@ trophyStatus = " "
 meatStatus = " "
 krakenStatus = " "
 
+
+def timeTillGR():
+    now = datetime.datetime.now()
+    if now.hour > 14 and now.hour < 21:
+        return f'{21-now.hour} hours and {60-now.minute} minuets'
+    elif now.hour > 21:
+        return f'{13 + (24 - now.hour)} hours and {60-now.minute} minuets'
+    elif now.hour < 13:
+        return f'{now.hour - 13} hours and {now.minute} minuets'
+
+def GoldrushNow():
+    #Goldrush is 1Pm to 2PM and 9Pm to 10PM (Eastern time)
+    now = datetime.datetime.now()
+    if now.hour == 13 or now.hour == 21:
+        Goldrush_Label['background'] = "Gold"
+        return True
+    else:
+        Goldrush_Label['background'] = 'SystemButtonFace'
+        return False
 
 def vailHelp(main):
     vailWindow = tk.Toplevel(main)
@@ -315,6 +335,10 @@ def timer():
     Meat_Label['text'] = str(meatTime)
     Kraken_Status_Label.config(text=krakenStatus)
     Kraken_Label['text'] = str(krakenTime)
+    if GoldrushNow():
+        Goldrush_Label['text'] = f'Gold rush is now!'
+    else:
+        Goldrush_Label['text'] = f'{timeTillGR()} until Gold rush'
 
     main.after(1000, timer)
 
@@ -461,62 +485,67 @@ kraken_image = tk.PhotoImage(file="assets\\LegendMeat.png")
 Spyglass_image = tk.PhotoImage(file="assets\\Spyglass.png")
 Coin_image = tk.PhotoImage(file="assets\\Coin.png")
 
+Goldrush_Label = tk.Label(main, text=f'this text')
+Goldrush_Label.grid(row=0, columnspan=4)
+
 Button_Label = tk.Label(main, text="Start / Stop Button")
 Button_Label.config(bg="Black")
 Button_Label.config(fg="White")
-Button_Label.grid(row=0, column=0)
+Button_Label.grid(row=1, column=0)
 Cook_Timer_Label = tk.Label(main, text="Time till cooked")
-Cook_Timer_Label.grid(row=0, column=1)
+Cook_Timer_Label.grid(row=1, column=1)
 Burn_Timer_Label = tk.Label(main, text="Time till burned")
 Burn_Timer_Label.config(bg="Black")
 Burn_Timer_Label.config(fg="White")
-Burn_Timer_Label.grid(row=0, column=2)
+Burn_Timer_Label.grid(row=1, column=2)
 Food_Status_Label = tk.Label(main, text="Food Status")
-Food_Status_Label.grid(row=0, column=3)
+Food_Status_Label.grid(row=1, column=3)
+# Goldrush_Status_Label = tk.Label(main, text="GoldRush Timer")
+# Goldrush_Status_Label.grid(row=1, column=4)
 
 Fish_Button = tk.Button(main, image=fish_image, text="Fish", command=lambda: setTimer('fish'))
-Fish_Button.grid(row=1, column=0)
+Fish_Button.grid(row=2, column=0)
 Fish_Label = tk.Label(main, text=str(fishTime))
 Fish_Label.config(bg="Light Grey", width=5, height=5)
-Fish_Label.grid(row=1, column=1)
+Fish_Label.grid(row=2, column=1)
 Fish_Status_Label = tk.Label(main, text=fishStatus)
-Fish_Status_Label.grid(row=1, column=3)
+Fish_Status_Label.grid(row=2, column=3)
 Fish_Burn_Label = tk.Label(main, text=str(fishBurnTime))
 Fish_Burn_Label.config(bg="Black", fg="White", width=5, height=5)
-Fish_Burn_Label.grid(row=1, column=2)
+Fish_Burn_Label.grid(row=2, column=2)
 
 Trophy_Button = tk.Button(main, image=trophy_image, text="Trophy Fish", command=lambda: setTimer('trophy'))
-Trophy_Button.grid(row=2, column=0)
+Trophy_Button.grid(row=3, column=0)
 Trophy_Label = tk.Label(main, text=str(trophyTime))
 Trophy_Label.config(bg="Light Grey", width=5, height=5)
-Trophy_Label.grid(row=2, column=1)
+Trophy_Label.grid(row=3, column=1)
 Trophy_Status_Label = tk.Label(main, text=trophyStatus, width=8, height=8)
-Trophy_Status_Label.grid(row=2, column=3)
+Trophy_Status_Label.grid(row=3, column=3)
 Trophy_Burn_Label = tk.Label(main, text=str(trophyBurnTime))
 Trophy_Burn_Label.config(bg="Black", fg="White", width=5, height=5)
-Trophy_Burn_Label.grid(row=2, column=2)
+Trophy_Burn_Label.grid(row=3, column=2)
 
 Meat_Button = tk.Button(main, image=meat_image, text="Normal Meat", command=lambda: setTimer('meat'))
-Meat_Button.grid(row=3, column=0)
+Meat_Button.grid(row=4, column=0)
 Meat_Label = tk.Label(main, text=str(meatTime))
 Meat_Label.config(bg="Light Grey", width=5, height=5)
-Meat_Label.grid(row=3, column=1)
+Meat_Label.grid(row=4, column=1)
 Meat_Status_Label = tk.Label(main, text=meatStatus, width=8, height=8)
-Meat_Status_Label.grid(row=3, column=3)
+Meat_Status_Label.grid(row=4, column=3)
 Meat_Burn_Label = tk.Label(main, text=str(meatBurnTime))
 Meat_Burn_Label.config(bg="Black", fg="White", width=5, height=5)
-Meat_Burn_Label.grid(row=3, column=2)
+Meat_Burn_Label.grid(row=4, column=2)
 
 Kraken_Button = tk.Button(main, image=kraken_image, text="Normal Meat", command=lambda: setTimer('kraken'))
-Kraken_Button.grid(row=4, column=0)
+Kraken_Button.grid(row=5, column=0)
 Kraken_Label = tk.Label(main, text=str(meatTime))
 Kraken_Label.config(bg="Light Grey", width=5, height=5)
-Kraken_Label.grid(row=4, column=1)
+Kraken_Label.grid(row=5, column=1)
 Kraken_Status_Label = tk.Label(main, text=meatStatus, width=8, height=8)
 Kraken_Status_Label.grid(row=4, column=3)
 Kraken_Burn_Label = tk.Label(main, text=str(krakenBurnTime))
 Kraken_Burn_Label.config(bg="Black", fg="White", width=5, height=5)
-Kraken_Burn_Label.grid(row=4, column=2)
+Kraken_Burn_Label.grid(row=5, column=2)
 
 # Make Menu Bar
 menubar = tk.Menu(main)
