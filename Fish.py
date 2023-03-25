@@ -2,7 +2,7 @@ import tkinter as tk
 
 def allFish(main):
     allfishWindow = tk.Toplevel(main)
-    allfishWindow.iconbitmap("fish.ico")
+    # allfishWindow.iconbitmap("fish.ico")
     allSplash = tk.Label(allfishWindow, text="Splashtail's can be found anywhere, no need for bait.", fg="Red",
                          font=("Arial", 18)).pack()
     allPondie = tk.Label(allfishWindow, text="Pondie's are found in fresh water ponds. No bait is needed", fg="Blue",
@@ -33,21 +33,21 @@ def allFish(main):
 
 def splashtail(main):
     splashtailWindow = tk.Toplevel(main)
-    splashtailWindow.iconbitmap("fish.ico")
+    splashtailWindow.iconbitmap("assets\\fish.ico")
     splashtailWindow.title('Splashtail')
     splashLabel = tk.Label(splashtailWindow, text="Splashtail's can be found anywhere, no need for bait.").pack()
 
 
 def pondie(main):
     pondieWindow = tk.Toplevel(main)
-    pondieWindow.iconbitmap("fish.ico")
+    pondieWindow.iconbitmap("assets\\fish.ico")
     pondieWindow.title('Pondie')
     pondieLabel = tk.Label(pondieWindow, text="Pondie's are found in fresh water ponds. No bait is needed").pack()
 
 
 def plentifin(main):
     plentifinWindow = tk.Toplevel(main)
-    plentifinWindow.iconbitmap("fish.ico")
+    plentifinWindow.iconbitmap("assets\\fish.ico")
     plentifinWindow.title('Plentifin')
     plentifinLabel = tk.Label(plentifinWindow,
                               text="Plentifin's are found in the Shores of Plenty. Use Earthworms for bait").pack()
@@ -55,7 +55,7 @@ def plentifin(main):
 
 def wildsplash(main):
     wildsplashWindow = tk.Toplevel(main)
-    wildsplashWindow.iconbitmap("fish.ico")
+    wildsplashWindow.iconbitmap("assets\\fish.ico")
     wildsplashWindow.title('Wildsplash')
     wildsplashLabel = tk.Label(wildsplashWindow,
                                text="Wildsplash's are found in the Wilds. use Earthworms for bait").pack()
@@ -63,7 +63,7 @@ def wildsplash(main):
 
 def ancientscales(main):
     ancientscaleWindow = tk.Toplevel(main)
-    ancientscaleWindow.iconbitmap("fish.ico")
+    ancientscaleWindow.iconbitmap("assets\\fish.ico")
     ancientscaleWindow.title('Ancientscale')
     ancientscaleLabel = tk.Label(ancientscaleWindow,
                                  text="Ancientscale's can be found in the ancient isles. Use Leeches for bait").pack()
@@ -71,7 +71,7 @@ def ancientscales(main):
 
 def devilfish(main):
     devilfishWindow = tk.Toplevel(main)
-    devilfishWindow.iconbitmap("fish.ico")
+    devilfishWindow.iconbitmap("assets\\fish.ico")
     devilfishWindow.title('Devilfish')
     devilfishLabel = tk.Label(devilfishWindow,
                               text="Devilfish are found in the Devil's Roar. use Grubs for bait").pack()
@@ -79,7 +79,7 @@ def devilfish(main):
 
 def battlegill(main):
     battlegilWindow = tk.Toplevel(main)
-    battlegilWindow.iconbitmap("fish.ico")
+    battlegilWindow.iconbitmap("assets\\fish.ico")
     battlegilWindow.title('Battlegill')
     battlegilLabel = tk.Label(battlegilWindow,
                               text="Battlegill are found near skeleton ships and active skull forts. use Grubs for bait"
@@ -88,21 +88,21 @@ def battlegill(main):
 
 def wrecker(main):
     wreckerWindow = tk.Toplevel(main)
-    wreckerWindow.iconbitmap("fish.ico")
+    wreckerWindow.iconbitmap("assets\\fish.ico")
     wreckerWindow.title('Wrecker')
     wreckerLabel = tk.Label(wreckerWindow, text="Wreckers are found near shipwrecks. use Earthworms as bait.").pack()
 
 
 def stormfish(main):
     stormfishWindow = tk.Toplevel(main)
-    stormfishWindow.iconbitmap("fish.ico")
+    stormfishWindow.iconbitmap("assets\\fish.ico")
     stormfishWindow.title('Stormfish')
     stormfishLabel = tk.Label(stormfishWindow, text="Stormfish are found in the storm. Use Leeches as bait.").pack()
 
 
 def islehopper(main):
     islehopperWindow = tk.Toplevel(main)
-    islehopperWindow.iconbitmap("fish.ico")
+    islehopperWindow.iconbitmap("assets\\fish.ico")
     islehopperWindow.title('Islehopper')
     islehopperLabel = tk.Label(islehopperWindow,
                                text="Islehoppers are only found close to islands. No bait is needed").grid(row=0,
