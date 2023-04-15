@@ -7,6 +7,64 @@ def clearWindow(window):
     for widget in window.winfo_children():
         widget.destroy()
 
+
+def skullshrineDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window, text="Old fithful island, top of the island to the east by a pile of skulls")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\skullshrine.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+
+
+def ancientbeliefsDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window, text="East side of Old Faithful island by a shipwreck")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\ancientbeliefs.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+
+
+def campkrakenDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window, text="in a camp on the east side of the island")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\campkraken.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+
+
+
+def stonesdeepDisply(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window, text="Kraken's fall, near the center of the island by an half dug up chest")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\stonesdeep.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+
+
 def runinsDisplay(window, list):
     """the list argument is only for a global list to store the image file.
     This is to prevent trash collection from removing the image before its used"""
@@ -306,3 +364,30 @@ def find_sudds(window, list):
                               command=lambda x = window: runinsDisplay(x, list)
                               )
     runins_button.pack(pady=5)
+    stones_text = "The Veil Stone wasn't in the chest on the north of Kraken's Fall, should have known, should have known… The Ancients buried the stones deep, come find me and I'll tell you all."
+    stones_button = tk.Button(location_frame,
+                              text=stones_text,
+                              command=lambda x=window: stonesdeepDisply(x, list)
+                              )
+    stones_button.pack(pady=5)
+
+    campkraken_text = "No time to waste, meet at the camp on Kraken's Fall. Knowledge must be preserved, the stone must be protected."
+    campkraken_button = tk.Button(location_frame,
+                              text=campkraken_text,
+                              command=lambda x=window: campkrakenDisplay(x, list)
+                              )
+    campkraken_button.pack(pady=5)
+
+    ancientbeliefs_text = "My research has led me to many places and I have learned much about the Ancients and their beliefs. Seek me amongst the wreck of a ship to the east of Old Faithful Isle and I'll share a little with you."
+    ancientbeliefs_button = tk.Button(location_frame,
+                                  text=ancientbeliefs_text,
+                                  command=lambda x=window: ancientbeliefsDisplay(x, list)
+                                  )
+    ancientbeliefs_button.pack(pady=5)
+
+    skullshrine_text = "The location of the Veil Stone, I'm almost certain. Just need to check my hypothesis at the skull shrine atop Old Faithful Isle, meet there."
+    skullshrine_button = tk.Button(location_frame,
+                                      text=skullshrine_text,
+                                      command=lambda x=window: skullshrineDisplay(x, list)
+                                      )
+    skullshrine_button.pack(pady=5)
