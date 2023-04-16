@@ -8,6 +8,62 @@ def clearWindow(window):
         widget.destroy()
 
 
+def returnDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window, text="Marauder’s Arch, North side of the island. just east of the graveyard on the beach")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\return.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+
+
+def dillydallyDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window, text="Highest part of Marauder’s Arch, under a withered tree")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\dillydally.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+
+
+def momentsagoDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window, text="Cave at the bottom of the Sunken Grove")
+    infoLabel.pack(pady=3)
+    image = tk.PhotoImage(file="assets\\momentsago.gif")
+    list.append(image)
+    imageLabel = tk.Label(window, image=image)
+    imageLabel.pack()
+
+
+def barnclechestDisplay(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window, text="Northeast side of Sunken grove, by a barnacle chest")
+    infoLabel.pack(pady=3)
+    # image = tk.PhotoImage(file="assets\\skullshrine.gif")
+    # list.append(image)
+    # imageLabel = tk.Label(window, image=image)
+    # imageLabel.pack()
+
+
 def skullshrineDisplay(window, list):
     """the list argument is only for a global list to store the image file.
     This is to prevent trash collection from removing the image before its used"""
@@ -50,7 +106,6 @@ def campkrakenDisplay(window, list):
     imageLabel.pack()
 
 
-
 def stonesdeepDisply(window, list):
     """the list argument is only for a global list to store the image file.
     This is to prevent trash collection from removing the image before its used"""
@@ -78,6 +133,7 @@ def runinsDisplay(window, list):
     imageLabel = tk.Label(window, image=image)
     imageLabel.pack()
 
+
 def highmermaidDisplay(window, list):
     """the list argument is only for a global list to store the image file.
     This is to prevent trash collection from removing the image before its used"""
@@ -91,6 +147,7 @@ def highmermaidDisplay(window, list):
     list.append(image)
     imageLabel = tk.Label(window, image=image)
     imageLabel.pack()
+
 
 def beachcampDisplay(window, list):
     """the list argument is only for a global list to store the image file.
@@ -106,6 +163,7 @@ def beachcampDisplay(window, list):
     imageLabel = tk.Label(window, image=image)
     imageLabel.pack()
 
+
 def forgottenDisplay(window, list):
     """the list argument is only for a global list to store the image file.
         This is to prevent trash collection from removing the image before its used"""
@@ -119,6 +177,8 @@ def forgottenDisplay(window, list):
     list.append(image)
     imageLabel = tk.Label(window, image=image)
     imageLabel.pack()
+
+
 def silentDisplay(window, list):
     """the list argument is only for a global list to store the image file.
     This is to prevent trash collection from removing the image before its used"""
@@ -133,6 +193,7 @@ def silentDisplay(window, list):
     imageLabel = tk.Label(window, image=image)
     imageLabel.pack()
 
+
 def lonerockDisplay(window, list):
     """the list argument is only for a global list to store the image file.
         This is to prevent trash collection from removing the image before its used
@@ -143,10 +204,6 @@ def lonerockDisplay(window, list):
     infoLabel = tk.Label(window,
                          text="Lone Cove, center of the island by a single large rock")
     infoLabel.pack(pady=3)
-    # image = tk.PhotoImage(file="assets\\time.gif")
-    # list.append(image)
-    # imageLabel = tk.Label(window, image=image)
-    # imageLabel.pack()
 
 
 def timeDisplay(window, list):
@@ -188,10 +245,6 @@ def knowledgeispowerDisplay(window, list):
     infoLabel = tk.Label(window,
                          text="Wanderer’s Refuge, North beach by stone foundations")
     infoLabel.pack(pady=3)
-    # image = tk.PhotoImage(file="assets\\olsudds.gif")
-    # list.append(image)
-    # imageLabel = tk.Label(window, image=image)
-    # imageLabel.pack()
 
 
 def olSuddsDisplay(window, list):
@@ -219,10 +272,6 @@ def anchientMap(window, list):
     infoLabel = tk.Label(window,
                          text="Smuggler’s Bay, at the large camp in front of Smuggler's cave")
     infoLabel.pack(pady=3)
-    # image = tk.PhotoImage(file="assets\\crescent_shape.gif")
-    # list.append(image)
-    # imageLabel = tk.Label(window, image=image)
-    # imageLabel.pack()
 
 
 def libraryDisplay(window, list):
@@ -391,3 +440,31 @@ def find_sudds(window, list):
                                       command=lambda x=window: skullshrineDisplay(x, list)
                                       )
     skullshrine_button.pack(pady=5)
+
+    barnclechest_text = "At The Sunken Grove, by a chest covered in barnacles, I made my breakthrough! All down on paper, precious knowledge, must be protected."
+    barnclechest_button = tk.Button(location_frame,
+                                   text=barnclechest_text,
+                                   command=lambda x=window: barnclechestDisplay(x, list)
+                                   )
+    barnclechest_button.pack(pady=5)
+
+    momentsago_text = "I see their footsteps ahead of me, as if they were here just moments ago. This path leads to the cave at The Sunken Grove."
+    momentsago_button = tk.Button(location_frame,
+                                    text=momentsago_text,
+                                    command=lambda x=window: momentsagoDisplay(x, list)
+                                    )
+    momentsago_button.pack(pady=5)
+
+    dillydally_text = "I now know where the Veil Stone lies. Meet me at the highest point of Marauder's Arch, don't dilly-dally!"
+    dillydally_button = tk.Button(location_frame,
+                                  text=dillydally_text,
+                                  command=lambda x=window: dillydallyDisplay(x, list)
+                                  )
+    dillydally_button.pack(pady=5)
+
+    return_text = "His return must not come to pass... the stones, protect the stones. The north of Marauder's Arch, by the canvas shelter, come find me."
+    return_button = tk.Button(location_frame,
+                                  text=return_text,
+                                  command=lambda x=window: returnDisplay(x, list)
+                                  )
+    return_button.pack(pady=5)
