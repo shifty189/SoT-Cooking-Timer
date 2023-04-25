@@ -8,6 +8,20 @@ def clearWindow(window):
         widget.destroy()
 
 
+def deepmonsters(window, list):
+    """the list argument is only for a global list to store the image file.
+    This is to prevent trash collection from removing the image before its used"""
+    clearWindow(window)
+    infoFrame = tk.Frame(window)
+    infoFrame.pack()
+    infoLabel = tk.Label(window, text="Shipwreck bay, northeast beach by the kraken corpse")
+    infoLabel.pack(pady=3)
+    # image = tk.PhotoImage(file="assets\\return.gif")
+    # list.append(image)
+    # imageLabel = tk.Label(window, image=image)
+    # imageLabel.pack()
+
+
 def returnDisplay(window, list):
     """the list argument is only for a global list to store the image file.
     This is to prevent trash collection from removing the image before its used"""
@@ -467,4 +481,11 @@ def find_sudds(window, list):
                                   text=return_text,
                                   command=lambda x=window: returnDisplay(x, list)
                                   )
+    return_button.pack(pady=5)
+
+    return_text = "Monsters of the deep, the Ancients revered and feared them. On the north shore of Shipwreck Bay, you'll find me. The Ancients have whispered their secrets to ol' Sudds."
+    return_button = tk.Button(location_frame,
+                              text=return_text,
+                              command=lambda x=window: deepmonsters(x, list)
+                              )
     return_button.pack(pady=5)
