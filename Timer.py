@@ -13,8 +13,8 @@ from playsound import playsound
 from findSeaPort import findPort
 import datetime
 
-version = "0.14.06 (VailPatch)"
-buildDate = "4/16/2023"
+version = "0.14.07 (VailPatch)"
+buildDate = "4/25/2023"
 recycleSave = []
 fishTime = 0
 fishBurnTime = 0
