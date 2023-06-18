@@ -1,4 +1,5 @@
 #  This is a cooking timer for Sea of Thieves
+#  Playsound 1.2.2 is required since 1.3.0 broke for some reason
 # the text to speach is from https://wideo.co/text-to-speech/
 #
 # fish = 30sec undercook, 40s cooked, 80s burn
@@ -7,14 +8,16 @@
 # Kraken and Meg 100s undercook, 120s cook, 240s burn
 
 import tkinter as tk
+import pkg_resources
+pkg_resources.require("playsound==1.2.2")
 from Fish import *
 from Vails import *
-from playsound import playsound
+from playsound import playsound # version 1.2.2 is required no newer
 from findSeaPort import findPort
 import datetime
 
-version = "0.14.07 (VailPatch)"
-buildDate = "4/25/2023"
+version = "0.14.08 (VailPatch)"
+buildDate = "6/18/2023"
 recycleSave = []
 fishTime = 0
 fishBurnTime = 0
@@ -41,7 +44,7 @@ def timeTillGR():
     elif now.hour > 21:
         return f'{13 + (24 - now.hour)} hours and {60-now.minute} minuets'
     elif now.hour < 13:
-        return f'{now.hour - 13} hours and {now.minute} minuets'
+        return f'{12 - now.hour} hours and {60 - now.minute} minuets'
 
 def GoldrushNow():
     #Goldrush is 1Pm to 2PM and 9Pm to 10PM (Eastern time)
