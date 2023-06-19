@@ -16,37 +16,39 @@ from playsound import playsound # version 1.2.2 is required no newer
 from findSeaPort import findPort
 import datetime
 
-version = "0.14.08 (VailPatch)"
+version = "0.14.09 (VailPatch)"
 buildDate = "6/18/2023"
 recycleSave = []
-fishTime = 0
-fishBurnTime = 0
-trophyTime = 0
-trophyBurnTime = 0
-meatTime = 0
-meatBurnTime = 0
-krakenTime = 0
-krakenBurnTime = 0
-cookingFish = False
-cookingTrophy = False
-cookingMeat = False
-cookingKraken = False
-fishStatus = " "
-trophyStatus = " "
-meatStatus = " "
-krakenStatus = " "
+fishTime: int = 0
+fishBurnTime: int = 0
+trophyTime: int = 0
+trophyBurnTime: int = 0
+meatTime: int = 0
+meatBurnTime: int = 0
+krakenTime: int = 0
+krakenBurnTime:int  = 0
+cookingFish: bool = False
+cookingTrophy: bool = False
+cookingMeat: bool = False
+cookingKraken: bool = False
+fishStatus: str = " "
+trophyStatus: str = " "
+meatStatus: str = " "
+krakenStatus: str = " "
 
 
-def timeTillGR():
+def timeTillGR() -> str:
     now = datetime.datetime.now()
-    if now.hour > 14 and now.hour < 21:
+    if now.hour > 13 and now.hour < 21:
         return f'{21-now.hour} hours and {60-now.minute} minuets'
     elif now.hour > 21:
         return f'{13 + (24 - now.hour)} hours and {60-now.minute} minuets'
     elif now.hour < 13:
         return f'{12 - now.hour} hours and {60 - now.minute} minuets'
+    else:
+        return "something has gone wrong"
 
-def GoldrushNow():
+def GoldrushNow() -> bool:
     #Goldrush is 1Pm to 2PM and 9Pm to 10PM (Eastern time)
     now = datetime.datetime.now()
     if now.hour == 13 or now.hour == 21:
@@ -103,7 +105,7 @@ def howTo():
     soundLabel2 = tk.Label(soundFrame, bg="White", text="In the Options menu you can turn audio alerts on or off.").pack()
 
 
-def moneyUpdate(x, y):
+def moneyUpdate(x:int, y:int):
     global moneyResult
     goldTemp = y-x
     goldTemp = "{:,}".format(goldTemp)
@@ -346,7 +348,7 @@ def timer():
     main.after(1000, timer)
 
 
-def setTimer(x):
+def setTimer(x:str):
     global fishTime
     global fishBurnTime
     global cookingFish
